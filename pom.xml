@@ -50,7 +50,7 @@
 	<scm>
 		<connection>scm:git:git@github.com:IT-Berater/de.wenzlaff.dump1090.git</connection>
 		<developerConnection>scm:git:git@github.com:IT-Berater/de.wenzlaff.dump1090.git</developerConnection>
-		<url>git@github.com:IT-Berater/de.wenzlaff.dump1090.git</url>
+		<url>https://github.com/IT-Berater/de.wenzlaff.dump1090</url>
 	</scm>
 
 	<build>
@@ -78,6 +78,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-gpg-plugin</artifactId>
+				<version>1.6</version>
 				<executions>
 					<execution>
 						<id>sign-artifacts</id>
