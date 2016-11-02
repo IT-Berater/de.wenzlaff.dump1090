@@ -48,7 +48,7 @@ public class Flugzeuge {
 	    7700 – Luftnotfall (emergency; seven-seven - going to heaven / falling from heaven / pray to heaven)
 	 * </pre>
 	 * 
-	 * @return
+	 * @return die Liste aller Flugzeuge mit einem Notfall.
 	 */
 	public List<Flugzeug> getNotfall() {
 		List<Flugzeug> notfallFlugzeuge = new ArrayList<Flugzeug>();
