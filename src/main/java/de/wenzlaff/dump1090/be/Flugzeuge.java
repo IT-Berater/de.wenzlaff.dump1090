@@ -3,11 +3,6 @@ package de.wenzlaff.dump1090.be;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import de.wenzlaff.dump1090.action.TimerAktion;
-
 /**
  * Flugzeuge.
  * 
@@ -16,21 +11,12 @@ import de.wenzlaff.dump1090.action.TimerAktion;
  */
 public class Flugzeuge {
 
-	/** Testmodus wenn auf true, bei false ist Produktion. */
-	private boolean TEST = true;
-
 	/** Der Name der Variable muss so sein wie in der JSON Datei. */
 	private String now;
 	private String messages;
 	private List<Flugzeug> aircraft;
 
-	private static final Logger LOG = LoggerFactory.getLogger(TimerAktion.class);
-
 	public Flugzeuge() {
-		super();
-		if (TEST) {
-			LOG.info("Testmodus ist angeschaltet.");
-		}
 		aircraft = new ArrayList<Flugzeug>();
 	}
 
@@ -55,17 +41,12 @@ public class Flugzeuge {
 
 		for (Flugzeug flugzeug : aircraft) {
 			if (flugzeug.getSquawk() != null) {
-				if (flugzeug.getSquawk().equals("7500") || flugzeug.getSquawk().equals("7600")
-						|| flugzeug.getSquawk().equals("7700")) {
+				if (flugzeug.getSquawk().equals(Luftnotfall.ENTFUEHRUNG.getCode())
+						|| flugzeug.getSquawk().equals(Luftnotfall.FUNKAUSFALL.getCode())
+						|| flugzeug.getSquawk().equals(Luftnotfall.LUFTNOTFALL.getCode())) {
 					notfallFlugzeuge.add(flugzeug);
 				}
 			}
-		}
-
-		if (TEST) {
-			// testweise ein Flugzeug ergänzen
-			notfallFlugzeuge.add(aircraft.get(0));
-
 		}
 		return notfallFlugzeuge;
 	}

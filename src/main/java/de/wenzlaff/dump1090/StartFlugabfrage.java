@@ -10,6 +10,7 @@ import org.slf4j.LoggerFactory;
 import de.wenzlaff.dump1090.action.TimerAktion;
 
 /**
+ * Startet eine Abfrage.
  * 
  * @author Thomas Wenzlaff
  *

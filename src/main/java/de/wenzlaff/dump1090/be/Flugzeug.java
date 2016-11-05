@@ -99,6 +99,7 @@ public class Flugzeug {
 	private String rssi;
 
 	private List<String> mlat;
+
 	private List<String> tisb;
 
 	public Flugzeug() {
