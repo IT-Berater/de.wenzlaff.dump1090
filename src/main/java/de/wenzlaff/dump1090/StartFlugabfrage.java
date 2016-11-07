@@ -25,12 +25,15 @@ public class StartFlugabfrage {
 	/**
 	 * Start der Abfrage.
 	 * 
+	 * Aufruf z.B. java -jar de.wenzlaff.dump1090-0.0.2-SNAPSHOT.jar 10.0.9.32 5
+	 * 
 	 * @param args
 	 */
 	public static void main(String[] args) {
 		if (args.length != 2) {
-			LOG.error("Aufruf des StartFlugabfrage Programms mit zwei Parametern: de.wenzlaff.dump1090.StartFlugabfrage [Server IP] [Intervall in Minuten]");
-			LOG.error("z.B.: de.wenzlaff.dump1090.StartFlugabfrage 10.0.9.32 5");
+			LOG.error("Programm abbruch, da nicht die richtige Anzahl von Parametern übergeben.");
+			LOG.error("Aufruf des StartFlugabfrage Programms mit zwei Parametern: [Server IP] [Intervall in Minuten]");
+			LOG.error("z.B.: java -jar de.wenzlaff.dump1090-0.0.2-SNAPSHOT.jar 10.0.9.32 5");
 			return;
 		}
 		String ip = args[0];
