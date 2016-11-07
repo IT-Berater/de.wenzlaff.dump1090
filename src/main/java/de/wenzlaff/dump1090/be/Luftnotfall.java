@@ -3,8 +3,7 @@ package de.wenzlaff.dump1090.be;
 /**
  * Luftnotfall.
  * 
- * Mit den Codes 7500, 7600 und 7700 werden Informationen über die Art einer
- * Luftnotlage übermittelt.
+ * Mit den Codes 7500, 7600 und 7700 werden Informationen über die Art einer Luftnotlage übermittelt.
  * 
  * Gebräuchliche Merksprüche sind angefügt:
  * 
@@ -16,18 +15,17 @@ package de.wenzlaff.dump1090.be;
  * 
  */
 public enum Luftnotfall {
+
 	/**
 	 * 7500 – Flugzeugentführung (hijacking; seven-five - man with a knife)
 	 */
 	ENTFUEHRUNG("7500", "Flugzeugentführung"),
 	/**
-	 * Funkausfall (radio failure; seven-six - hear nix / radio nix / need a
-	 * radio fix)
+	 * Funkausfall (radio failure; seven-six - hear nix / radio nix / need a radio fix)
 	 */
 	FUNKAUSFALL("7600", "Funkausfall"),
 	/**
-	 * Luftnotfall (emergency; seven-seven - going to heaven / falling from
-	 * heaven / pray to heaven)
+	 * Luftnotfall (emergency; seven-seven - going to heaven / falling from heaven / pray to heaven)
 	 */
 	LUFTNOTFALL("7700", "Luftnotfall");
 

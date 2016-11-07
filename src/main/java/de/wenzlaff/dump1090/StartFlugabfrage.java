@@ -28,19 +28,26 @@ public class StartFlugabfrage {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		LOG.info("Starte abfrage der Flugzeuge die einen Notfall melden.");
+		if (args.length != 2) {
+			LOG.error("Aufruf des StartFlugabfrage Programms mit zwei Parametern: de.wenzlaff.dump1090.StartFlugabfrage [Server IP] [Intervall in Minuten]");
+			LOG.error("z.B.: de.wenzlaff.dump1090.StartFlugabfrage 10.0.9.32 5");
+			return;
+		}
+		String ip = args[0];
+		String interval = args[1];
+		LOG.info("Starte abfrage der Flugzeuge die einen Notfall melden. Server IP Adresse: {} Intervall alle: {} Minuten", ip, interval);
+
 		StartFlugabfrage start = new StartFlugabfrage();
-		start.startAnzahlProTagTimer();
+		start.startAnzahlProTagTimer(ip, interval);
 	}
 
 	public StartFlugabfrage() {
 		scheduler = Executors.newScheduledThreadPool(1);
 	}
 
-	private void startAnzahlProTagTimer() {
-		// Todo: zum testen alle 10 Sekunden
-		LOG.info("Frage alle 10 Sekunden ab...");
-		scheduler.scheduleAtFixedRate(new TimerAktion(), 1, 10, TimeUnit.SECONDS);
+	private void startAnzahlProTagTimer(String ip, String interval) {
+		LOG.info("Frage alle " + interval + " Minuten ab...");
+		scheduler.scheduleAtFixedRate(new TimerAktion(ip), 0, Long.parseLong(interval), TimeUnit.MINUTES);
 	}
 
 }

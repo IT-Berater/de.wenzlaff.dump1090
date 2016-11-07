@@ -47,9 +47,7 @@ public class Flugzeug {
 	/** Der Name der Variable muss so sein wie in der JSON Datei. */
 
 	/**
-	 * hex: the 24-bit ICAO identifier of the aircraft, as 6 hex digits. The
-	 * identifier may start with '~', this means that the address is a non-ICAO
-	 * address (e.g. from TIS-B).
+	 * hex: the 24-bit ICAO identifier of the aircraft, as 6 hex digits. The identifier may start with '~', this means that the address is a non-ICAO address (e.g. from TIS-B).
 	 */
 	private String hex;
 	/** squawk: the 4-digit squawk (octal representation) */
@@ -59,26 +57,22 @@ public class Flugzeug {
 	/** lon: the aircraft position in decimal degrees */
 	private String lon;
 	/**
-	 * altitude: the aircraft altitude in feet, or "ground" if it is reporting
-	 * it is on the ground
+	 * altitude: the aircraft altitude in feet, or "ground" if it is reporting it is on the ground
 	 */
 	private String altitude;
 	/**
-	 * speed: reported speed in kt. This is usually speed over ground, but might
-	 * be IAS - you can't tell the difference here, sorry!
+	 * speed: reported speed in kt. This is usually speed over ground, but might be IAS - you can't tell the difference here, sorry!
 	 */
 	private String speed;
 	/** flight: the flight name / callsign */
 	private String flight;
 
 	/**
-	 * nucp: the NUCp (navigational uncertainty category) reported for the
-	 * position
+	 * nucp: the NUCp (navigational uncertainty category) reported for the position
 	 */
 	private String nucp;
 	/**
-	 * seen_pos: how long ago (in seconds before "now") the position was last
-	 * updated
+	 * seen_pos: how long ago (in seconds before "now") the position was last updated
 	 */
 	private String seen_pos;
 	/** vert_rate: vertical rate in feet/minute */
@@ -88,13 +82,11 @@ public class Flugzeug {
 	/** messages: total number of Mode S messages received from this aircraft */
 	private String messages;
 	/**
-	 * seen: how long ago (in seconds before "now") a message was last received
-	 * from this aircraft
+	 * seen: how long ago (in seconds before "now") a message was last received from this aircraft
 	 */
 	private String seen;
 	/**
-	 * rssi: recent average RSSI (signal power), in dbFS; this will always be
-	 * negative.
+	 * rssi: recent average RSSI (signal power), in dbFS; this will always be negative.
 	 */
 	private String rssi;
 

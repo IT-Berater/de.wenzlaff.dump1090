@@ -46,14 +46,12 @@ public class FlugzeugeEinlesen {
 	@DisplayName("Einlesen von Flugzeugdaten aus der Json Datei")
 	public void a_einlesenVonFlugzeugen() throws Exception {
 
-		try (Reader reader = new InputStreamReader(FlugzeugeEinlesen.class.getResourceAsStream("aircraft-2.json"),
-				"UTF-8")) {
-			Gson gson = new GsonBuilder().create();
-			Flugzeuge flugzeuge = gson.fromJson(reader, Flugzeuge.class);
-			System.out.println(flugzeuge);
-			System.out.println("Anzahl der Flugzeuge in der Datei: " + flugzeuge.getAnzahlFlugzeuge());
-			assertEquals(30, flugzeuge.getAnzahlFlugzeuge());
-		}
+		Reader reader = new InputStreamReader(FlugzeugeEinlesen.class.getResourceAsStream("aircraft-2.json"), "UTF-8");
+		Gson gson = new GsonBuilder().create();
+		Flugzeuge flugzeuge = gson.fromJson(reader, Flugzeuge.class);
+		System.out.println(flugzeuge);
+		System.out.println("Anzahl der Flugzeuge in der Datei: " + flugzeuge.getAnzahlFlugzeuge());
+		assertEquals(30, flugzeuge.getAnzahlFlugzeuge());
 	}
 
 	@Test

@@ -22,16 +22,22 @@ public class TimerAktion extends TimerTask {
 
 	private static final Logger LOG = LoggerFactory.getLogger(TimerAktion.class);
 
-	private static final String IP = "10.0.9.32";
+	private String serverUrl;
 
-	private static final String DUMP_SERVER_URL = "http://" + IP + "/dump1090/data/aircraft.json";
+	public TimerAktion(String ip) {
+		setUrl(ip);
+	}
+
+	private void setUrl(String ip) {
+		serverUrl = "http://" + ip + "/dump1090/data/aircraft.json";
+	}
 
 	@Override
 	public void run() {
 
 		InputStream is;
 		try {
-			is = new URL(DUMP_SERVER_URL).openStream();
+			is = new URL(serverUrl).openStream();
 
 			BufferedReader rd = new BufferedReader(new InputStreamReader(is, Charset.forName("UTF-8")));
 			String aircraftDatei = JsonUtil.readAll(rd);
@@ -39,13 +45,12 @@ public class TimerAktion extends TimerTask {
 			Gson gson = new GsonBuilder().create();
 			Flugzeuge flugzeuge = gson.fromJson(aircraftDatei, Flugzeuge.class);
 
-			if (flugzeuge.getNotfall().size() > 0) { // nur wenn im Notfall
-														// aktion ausgeben
-				LOG.info("Anzahl Flugzeuge im Notfall: {}", flugzeuge.getNotfall().size());
-				LOG.info("Flugzeuge im Notfall: {}", flugzeuge.getNotfall());
+			if (flugzeuge.getNotfall().size() > 0) { // nur wenn im Notfall aktion ausgeben
+				LogAktion log = new LogAktion(flugzeuge);
+				log.run();
 			}
 		} catch (ConnectException e) {
-			LOG.error("Verbindungs Error zu Adresse {} Error: {}", DUMP_SERVER_URL, e);
+			LOG.error("Verbindungs Error zu Adresse {} Error: {}", serverUrl, e);
 		} catch (IOException e1) {
 			LOG.error("Error {}", e1);
 		}

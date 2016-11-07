@@ -23,8 +23,7 @@ public class Flugzeuge {
 	/**
 	 * Liefert alle Flugzeuge mit Luftnotfall.
 	 * 
-	 * Mit den Codes 7500, 7600 und 7700 werden Informationen über die Art einer
-	 * Luftnotlage übermittelt.
+	 * Mit den Codes 7500, 7600 und 7700 werden Informationen über die Art einer Luftnotlage übermittelt.
 	 * 
 	 * Gebräuchliche Merksprüche sind angefügt:
 	 * 
@@ -41,8 +40,7 @@ public class Flugzeuge {
 
 		for (Flugzeug flugzeug : aircraft) {
 			if (flugzeug.getSquawk() != null) {
-				if (flugzeug.getSquawk().equals(Luftnotfall.ENTFUEHRUNG.getCode())
-						|| flugzeug.getSquawk().equals(Luftnotfall.FUNKAUSFALL.getCode())
+				if (flugzeug.getSquawk().equals(Luftnotfall.ENTFUEHRUNG.getCode()) || flugzeug.getSquawk().equals(Luftnotfall.FUNKAUSFALL.getCode())
 						|| flugzeug.getSquawk().equals(Luftnotfall.LUFTNOTFALL.getCode())) {
 					notfallFlugzeuge.add(flugzeug);
 				}
