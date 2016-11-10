@@ -45,8 +45,21 @@ public class FlugzeugeEinlesenTest {
 	private static final String DUMP_SERVER_URL = "http://10.0.7.32/dump1090/data/aircraft.json";
 
 	@Test
-	@DisplayName("Einlesen von Flugzeugdaten aus der Json Datei")
-	public void a_einlesenVonFlugzeugen() throws Exception {
+	@DisplayName("Einlesen von Flugzeugdaten aus der 1. Json Datei")
+	public void a_einlesenVonFlugzeugen1() throws Exception {
+
+		InputStream inputStream = new FileInputStream("src/test/java/de/wenzlaff/dump1090/be/aircraft-1.json");
+		Reader reader = new InputStreamReader(inputStream, "UTF-8");
+		Gson gson = new GsonBuilder().create();
+		Flugzeuge flugzeuge = gson.fromJson(reader, Flugzeuge.class);
+		System.out.println(flugzeuge);
+		System.out.println("Anzahl der Flugzeuge in der Datei: " + flugzeuge.getAnzahlFlugzeuge());
+		assertEquals(30, flugzeuge.getAnzahlFlugzeuge());
+	}
+
+	@Test
+	@DisplayName("Einlesen von Flugzeugdaten aus der 2. Json Datei")
+	public void b_einlesenVonFlugzeugen2() throws Exception {
 
 		InputStream inputStream = new FileInputStream("src/test/java/de/wenzlaff/dump1090/be/aircraft-2.json");
 		Reader reader = new InputStreamReader(inputStream, "UTF-8");
@@ -58,7 +71,7 @@ public class FlugzeugeEinlesenTest {
 	}
 
 	@Test
-	public void b_lesenViaUrl2() throws Exception {
+	public void c_lesenViaUrl2() throws Exception {
 
 		InputStream is = new URL(DUMP_SERVER_URL).openStream();
 		BufferedReader rd = new BufferedReader(new InputStreamReader(is, Charset.forName("UTF-8")));
@@ -72,7 +85,7 @@ public class FlugzeugeEinlesenTest {
 	}
 
 	@Test
-	public void c_lesenViaServerUrl3() throws Exception {
+	public void d_lesenViaServerUrl3() throws Exception {
 
 		InputStream is = new URL(DUMP_SERVER_URL).openStream();
 		BufferedReader rd = new BufferedReader(new InputStreamReader(is, Charset.forName("UTF-8")));
@@ -88,7 +101,7 @@ public class FlugzeugeEinlesenTest {
 	}
 
 	@Test
-	public void d_lesenNotfallViaServerUrl4() throws Exception {
+	public void e_lesenNotfallViaServerUrl4() throws Exception {
 
 		InputStream is = new URL(DUMP_SERVER_URL).openStream();
 		BufferedReader rd = new BufferedReader(new InputStreamReader(is, Charset.forName("UTF-8")));
