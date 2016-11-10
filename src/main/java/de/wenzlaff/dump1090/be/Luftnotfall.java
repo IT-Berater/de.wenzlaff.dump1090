@@ -38,6 +38,8 @@ public enum Luftnotfall {
 	}
 
 	/**
+	 * Liefert die Code Nummer des Notfalls. Z.b. 7500 oder 7700.
+	 * 
 	 * @return das code
 	 */
 	public String getCode() {
@@ -45,6 +47,8 @@ public enum Luftnotfall {
 	}
 
 	/**
+	 * Liefert den Text des Notfalls. Z.b. Funkausfall oder Flugzeugentführung.
+	 * 
 	 * @return das text
 	 */
 	public String getText() {
