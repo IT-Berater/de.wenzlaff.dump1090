@@ -38,7 +38,6 @@ import de.wenzlaff.dump1090.util.JsonUtil;
  * @author Thomas Wenzlaff
  * @version 0.1
  */
-@Ignore
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class FlugzeugeEinlesenTest {
 
@@ -70,6 +69,7 @@ public class FlugzeugeEinlesenTest {
 		assertEquals(30, flugzeuge.getAnzahlFlugzeuge());
 	}
 
+	@Ignore
 	@Test
 	public void c_lesenViaUrl2() throws Exception {
 
@@ -84,6 +84,7 @@ public class FlugzeugeEinlesenTest {
 		System.out.println("Flugzeug:  + " + JsonUtil.getAtPath(je, "aircraft"));
 	}
 
+	@Ignore
 	@Test
 	public void d_lesenViaServerUrl3() throws Exception {
 
@@ -100,6 +101,7 @@ public class FlugzeugeEinlesenTest {
 		assertTrue(flugzeuge.getAnzahlFlugzeuge() > 0);
 	}
 
+	@Ignore
 	@Test
 	public void e_lesenNotfallViaServerUrl4() throws Exception {
 
