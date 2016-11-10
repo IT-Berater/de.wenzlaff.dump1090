@@ -11,7 +11,9 @@ Flugzeuge
 Luftnotfall
 
 
-[![Build Status](https://travis-ci.org/IT-Berater/de.wenzlaff.dump1090.svg?branch=master)](https://travis-ci.org/IT-Berater/de.wenzlaff.dump1090)
+[![Build Status](https://travis-ci.org/IT-Berater/de.wenzlaff.dump1090.svg?branch=master)](https://travis-ci.org/IT-Berater/de.wenzlaff.dump1090) [![codecov](https://codecov.io/gh/IT-Berater/de.wenzlaff.dump1090/branch/master/graph/badge.svg)](https://codecov.io/gh/IT-Berater/de.wenzlaff.dump1090)
+
+
 
 
 Details siehe [http://blog.wenzlaff.de/]
