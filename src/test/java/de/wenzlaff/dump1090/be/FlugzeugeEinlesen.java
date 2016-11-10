@@ -25,8 +25,7 @@ import de.wenzlaff.dump1090.util.JsonUtil;
 /**
  * Test Klasse mit JUnit 5.
  * 
- * Mit den Codes 7500, 7600 und 7700 werden Informationen über die Art einer
- * Luftnotlage übermittelt. Gebräuchliche Merksprüche sind angefügt:
+ * Mit den Codes 7500, 7600 und 7700 werden Informationen über die Art einer Luftnotlage übermittelt. Gebräuchliche Merksprüche sind angefügt:
  * 
  * <pre>
     7500 – Flugzeugentführung (hijacking; seven-five - man with a knife)
@@ -64,8 +63,7 @@ public class FlugzeugeEinlesen {
 		JsonElement je = new JsonParser().parse(jsonText);
 		System.out.println(je);
 
-		System.out.println("Zeit" + JsonUtil.getAtPath(je, "now").getAsString() + " Nachricht Nr. "
-				+ JsonUtil.getAtPath(je, "messages").getAsString());
+		System.out.println("Zeit" + JsonUtil.getAtPath(je, "now").getAsString() + " Nachricht Nr. " + JsonUtil.getAtPath(je, "messages").getAsString());
 		System.out.println("Flugzeug:  + " + JsonUtil.getAtPath(je, "aircraft"));
 	}
 
