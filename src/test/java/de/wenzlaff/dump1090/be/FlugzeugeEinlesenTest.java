@@ -13,6 +13,7 @@ import java.nio.charset.Charset;
 
 import org.junit.FixMethodOrder;
 import org.junit.Test;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.runners.MethodSorters;
 
@@ -56,6 +57,7 @@ public class FlugzeugeEinlesenTest {
 	}
 
 	@Test
+	@Disabled
 	public void b_lesenViaUrl2() throws Exception {
 
 		InputStream is = new URL(DUMP_SERVER_URL).openStream();
@@ -70,6 +72,7 @@ public class FlugzeugeEinlesenTest {
 	}
 
 	@Test
+	@Disabled
 	public void c_lesenViaServerUrl3() throws Exception {
 
 		InputStream is = new URL(DUMP_SERVER_URL).openStream();
@@ -86,6 +89,7 @@ public class FlugzeugeEinlesenTest {
 	}
 
 	@Test
+	@Disabled
 	public void d_lesenNotfallViaServerUrl4() throws Exception {
 
 		InputStream is = new URL(DUMP_SERVER_URL).openStream();
