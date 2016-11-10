@@ -12,8 +12,8 @@ import java.net.URL;
 import java.nio.charset.Charset;
 
 import org.junit.FixMethodOrder;
+import org.junit.Ignore;
 import org.junit.Test;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.runners.MethodSorters;
 
@@ -38,6 +38,7 @@ import de.wenzlaff.dump1090.util.JsonUtil;
  * @author Thomas Wenzlaff
  * @version 0.1
  */
+@Ignore
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class FlugzeugeEinlesenTest {
 
@@ -57,7 +58,6 @@ public class FlugzeugeEinlesenTest {
 	}
 
 	@Test
-	@Disabled
 	public void b_lesenViaUrl2() throws Exception {
 
 		InputStream is = new URL(DUMP_SERVER_URL).openStream();
@@ -72,7 +72,6 @@ public class FlugzeugeEinlesenTest {
 	}
 
 	@Test
-	@Disabled
 	public void c_lesenViaServerUrl3() throws Exception {
 
 		InputStream is = new URL(DUMP_SERVER_URL).openStream();
@@ -89,7 +88,6 @@ public class FlugzeugeEinlesenTest {
 	}
 
 	@Test
-	@Disabled
 	public void d_lesenNotfallViaServerUrl4() throws Exception {
 
 		InputStream is = new URL(DUMP_SERVER_URL).openStream();
