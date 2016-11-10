@@ -4,6 +4,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 import java.io.BufferedReader;
+import java.io.FileInputStream;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
@@ -37,7 +38,7 @@ import de.wenzlaff.dump1090.util.JsonUtil;
  * @version 0.1
  */
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
-public class FlugzeugeEinlesen {
+public class FlugzeugeEinlesenTest {
 
 	private static final String DUMP_SERVER_URL = "http://10.0.7.32/dump1090/data/aircraft.json";
 
@@ -45,7 +46,8 @@ public class FlugzeugeEinlesen {
 	@DisplayName("Einlesen von Flugzeugdaten aus der Json Datei")
 	public void a_einlesenVonFlugzeugen() throws Exception {
 
-		Reader reader = new InputStreamReader(FlugzeugeEinlesen.class.getResourceAsStream("aircraft-2.json"), "UTF-8");
+		InputStream inputStream = new FileInputStream("src/test/java/de/wenzlaff/dump1090/be/aircraft-2.json");
+		Reader reader = new InputStreamReader(inputStream, "UTF-8");
 		Gson gson = new GsonBuilder().create();
 		Flugzeuge flugzeuge = gson.fromJson(reader, Flugzeuge.class);
 		System.out.println(flugzeuge);
