@@ -57,6 +57,15 @@ public class FlugzeugeTest {
 		}
 	}
 
+	@Test
+	public void testGetNotfallNulll() {
+		Flugzeug f = getFlugzeugImNotfall();
+		String nullString = null;
+		f.setSquawk(nullString);
+		this.flugzeuge.addFlugzeug(f);
+		assertEquals(0, this.flugzeuge.getNotfall().size());
+	}
+
 	/**
 	 * Ein Testflugzeut das im Notfall ist.
 	 * 
