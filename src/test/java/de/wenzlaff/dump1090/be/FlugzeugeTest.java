@@ -3,6 +3,8 @@ package de.wenzlaff.dump1090.be;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
+import java.util.ArrayList;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -119,6 +121,12 @@ public class FlugzeugeTest {
 	public void testMessageg() {
 		this.flugzeuge.setMessages("123");
 		assertEquals("123", this.flugzeuge.getMessages());
+	}
+
+	@Test
+	public void flugzeugeSetzen() {
+		this.flugzeuge.setFlugzeuge(new ArrayList<Flugzeug>());
+		assertEquals(0, this.flugzeuge.getAnzahlFlugzeuge());
 	}
 
 }
