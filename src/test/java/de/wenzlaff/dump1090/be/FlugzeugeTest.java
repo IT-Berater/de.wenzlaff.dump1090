@@ -28,8 +28,30 @@ public class FlugzeugeTest {
 	}
 
 	@Test
-	public void testGetNotfall() {
+	public void testGetNotfallKeinNotfall() {
 		assertEquals(0, this.flugzeuge.getNotfall().size());
+	}
+
+	@Test
+	public void testGetNotfallMitNotfall() {
+		Flugzeug f = getFlugzeugImNotfall();
+		this.flugzeuge.addFlugzeug(f);
+		assertEquals(1, this.flugzeuge.getNotfall().size());
+		System.out.println(f);
+	}
+
+	/**
+	 * Ein Testflugzeut das im Notfall ist.
+	 * 
+	 * @return Flugzeug mit Notfall.
+	 */
+	private Flugzeug getFlugzeugImNotfall() {
+		Flugzeug f = new Flugzeug();
+		f.setAltitude("1000");
+		f.setHex("FFFF");
+		f.setSpeed("1000");
+		f.setSquawk(Luftnotfall.LUFTNOTFALL);
+		return f;
 	}
 
 	@Test

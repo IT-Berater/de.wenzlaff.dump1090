@@ -114,6 +114,10 @@ public class Flugzeug {
 		this.squawk = squawk;
 	}
 
+	public void setSquawk(Luftnotfall luftnotfall) {
+		this.squawk = luftnotfall.getCode();
+	}
+
 	public String getLat() {
 		return lat;
 	}
