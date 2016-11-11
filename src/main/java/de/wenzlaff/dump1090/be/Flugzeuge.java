@@ -53,6 +53,10 @@ public class Flugzeuge {
 		aircraft.add(f);
 	}
 
+	public void clear() {
+		aircraft.clear();
+	}
+
 	/**
 	 * @return das flugzeuge
 	 */

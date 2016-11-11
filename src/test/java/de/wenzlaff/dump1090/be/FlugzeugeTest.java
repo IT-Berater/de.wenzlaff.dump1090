@@ -33,11 +33,28 @@ public class FlugzeugeTest {
 	}
 
 	@Test
+	public void testGetFlugzeugel() {
+		assertEquals(0, this.flugzeuge.getFlugzeuge().size());
+	}
+
+	@Test
 	public void testGetNotfallMitNotfall() {
 		Flugzeug f = getFlugzeugImNotfall();
 		this.flugzeuge.addFlugzeug(f);
 		assertEquals(1, this.flugzeuge.getNotfall().size());
 		System.out.println(f);
+	}
+
+	@Test
+	public void testGetNotfallMitAllenNotfall() {
+
+		for (Luftnotfall notfall : Luftnotfall.values()) {
+			Flugzeug f = getFlugzeugImNotfall(notfall);
+			this.flugzeuge.addFlugzeug(f);
+			assertEquals(1, this.flugzeuge.getNotfall().size());
+			System.out.println("Notfall: " + notfall + " Flugzeug: " + f);
+			this.flugzeuge.clear();
+		}
 	}
 
 	/**
@@ -51,6 +68,20 @@ public class FlugzeugeTest {
 		f.setHex("FFFF");
 		f.setSpeed("1000");
 		f.setSquawk(Luftnotfall.LUFTNOTFALL);
+		return f;
+	}
+
+	/**
+	 * Ein Testflugzeut das im Notfall ist.
+	 * 
+	 * @return Flugzeug mit Notfall.
+	 */
+	private Flugzeug getFlugzeugImNotfall(Luftnotfall notfall) {
+		Flugzeug f = new Flugzeug();
+		f.setAltitude("1000");
+		f.setHex("FFFF");
+		f.setSpeed("1000");
+		f.setSquawk(notfall);
 		return f;
 	}
 
