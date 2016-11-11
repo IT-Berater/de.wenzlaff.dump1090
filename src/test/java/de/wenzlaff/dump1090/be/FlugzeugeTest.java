@@ -54,7 +54,10 @@ public class FlugzeugeTest {
 			Flugzeug f = getFlugzeugImNotfall(notfall);
 			this.flugzeuge.addFlugzeug(f);
 			assertEquals(1, this.flugzeuge.getNotfall().size());
-			System.out.println("Notfall: " + notfall + " Flugzeug: " + f);
+			System.out.println("Notfall: " + notfall + " Flugzeug: " + f + " Notfall Art: " + notfall.getText() + " - " + notfall);
+
+			assertEquals(notfall.toString(), notfall.getText());
+
 			this.flugzeuge.clear();
 		}
 	}
