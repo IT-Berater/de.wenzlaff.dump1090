@@ -115,4 +115,10 @@ public class FlugzeugeTest {
 		assertEquals(24, this.flugzeuge.toString().length());
 	}
 
+	@Test
+	public void testMessageg() {
+		this.flugzeuge.setMessages("123");
+		assertEquals("123", this.flugzeuge.getMessages());
+	}
+
 }

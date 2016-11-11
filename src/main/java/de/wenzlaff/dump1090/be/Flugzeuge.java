@@ -103,7 +103,7 @@ public class Flugzeuge {
 	 *            das flugzeuge wird gesetzt
 	 */
 	public void setFlugzeuge(List<Flugzeug> flugzeuge) {
-		aircraft = flugzeuge;
+		this.aircraft = flugzeuge;
 	}
 
 	@Override
