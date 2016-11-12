@@ -18,7 +18,7 @@ import com.google.gson.GsonBuilder;
 import de.wenzlaff.dump1090.be.Flugzeuge;
 import de.wenzlaff.dump1090.util.JsonUtil;
 
-public class TimerAktion extends TimerTask {
+public class TimerAktion extends TimerTask implements Aktion {
 
 	private static final Logger LOG = LoggerFactory.getLogger(TimerAktion.class);
 

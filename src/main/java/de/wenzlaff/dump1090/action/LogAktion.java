@@ -11,7 +11,7 @@ import de.wenzlaff.dump1090.be.Flugzeuge;
  * @author Thomas Wenzlaff
  * 
  */
-public class LogAktion {
+public class LogAktion implements Aktion {
 
 	private static final Logger LOG = LoggerFactory.getLogger(LogAktion.class);
 
@@ -21,6 +21,7 @@ public class LogAktion {
 		this.flugzeuge = flugzeuge;
 	}
 
+	@Override
 	public void run() {
 		LOG.info("Anzahl Flugzeuge im Notfall: {}", this.flugzeuge.getNotfall().size());
 		LOG.info("Flugzeuge im Notfall: {}\n", this.flugzeuge.getNotfall());

@@ -24,7 +24,7 @@ import net.pushover.client.Status;
  * @author Thomas Wenzlaff
  *
  */
-public class PushoverAktion {
+public class PushoverAktion implements Aktion {
 
 	private static final Logger LOG = LoggerFactory.getLogger(PushoverAktion.class);
 
@@ -48,6 +48,7 @@ public class PushoverAktion {
 		pushoverDevice = properties.getProperty("pushover_device", "device");
 	}
 
+	@Override
 	public void run() {
 		LOG.info("Pushover Aktion mit {} ... ", this.flugzeuge);
 
