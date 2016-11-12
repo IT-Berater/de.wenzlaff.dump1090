@@ -15,44 +15,44 @@ import org.junit.Test;
  */
 public class FlugzeugTest {
 
-	private Flugzeug f;
+	private Flugzeug flugzeug;
 
 	@Before
 	public void setUp() throws Exception {
-		f = new Flugzeug();
+		flugzeug = new Flugzeug();
 	}
 
 	@Test
 	public void testFlugzeug() {
-		assertNotNull(f);
+		assertNotNull(flugzeug);
 	}
 
 	@Test
 	public void testGetHex() {
-		assertNull(f.getHex());
+		assertNull(flugzeug.getHex());
 	}
 
 	@Test
 	public void testSetHex() {
-		f.setHex("junit");
-		assertEquals("junit", f.getHex());
+		flugzeug.setHex("junit");
+		assertEquals("junit", flugzeug.getHex());
 	}
 
 	@Test
 	public void testGetSquawk() {
-		assertNull(f.getSquawk());
+		assertNull(flugzeug.getSquawk());
 	}
 
 	@Test
 	public void testSetSquawkString() {
-		f.setSquawk("junit");
-		assertEquals("junit", f.getSquawk());
+		flugzeug.setSquawk("junit");
+		assertEquals("junit", flugzeug.getSquawk());
 	}
 
 	@Test
 	public void testSetSquawkLuftnotfall() {
-		f.setSquawk(Luftnotfall.FUNKAUSFALL);
-		assertEquals(Luftnotfall.FUNKAUSFALL.getCode(), f.getSquawk());
+		flugzeug.setSquawk(Luftnotfall.FUNKAUSFALL);
+		assertEquals(Luftnotfall.FUNKAUSFALL.getCode(), flugzeug.getSquawk());
 	}
 
 }

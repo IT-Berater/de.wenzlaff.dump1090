@@ -10,9 +10,10 @@ import java.io.InputStreamReader;
 import java.io.Reader;
 import java.net.URL;
 import java.nio.charset.Charset;
+import java.util.Properties;
 
+import org.junit.Before;
 import org.junit.FixMethodOrder;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.runners.MethodSorters;
@@ -23,6 +24,7 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
 
 import de.wenzlaff.dump1090.util.JsonUtil;
+import de.wenzlaff.dump1090.util.Setup;
 
 /**
  * Test Klasse mit JUnit 5.
@@ -41,7 +43,19 @@ import de.wenzlaff.dump1090.util.JsonUtil;
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class FlugzeugeEinlesenTest {
 
-	private static final String DUMP_SERVER_URL = "http://10.0.7.32/dump1090/data/aircraft.json";
+	private String serverUrl;
+
+	/** Damit nur lokal getestet wird wenn true. Bei false werden nicht alle Tests ausgeführt. */
+	private boolean lokalerTestmodus;
+
+	@Before
+	public void ini() {
+		Properties p = Setup.getProperties();
+		String ip = p.getProperty("dump1090_server_ip");
+		serverUrl = "http://" + ip + "/dump1090/data/aircraft.json";
+		lokalerTestmodus = Boolean.valueOf(p.getProperty("lokaler_testmodus", "false"));
+		System.out.println("Testmodus: " + lokalerTestmodus);
+	}
 
 	@Test
 	@DisplayName("Einlesen von Flugzeugdaten aus der 1. Json Datei")
@@ -69,51 +83,57 @@ public class FlugzeugeEinlesenTest {
 		assertEquals(30, flugzeuge.getAnzahlFlugzeuge());
 	}
 
-	@Ignore
 	@Test
 	public void c_lesenViaUrl2() throws Exception {
 
-		InputStream is = new URL(DUMP_SERVER_URL).openStream();
-		BufferedReader rd = new BufferedReader(new InputStreamReader(is, Charset.forName("UTF-8")));
-		String jsonText = JsonUtil.readAll(rd);
+		if (lokalerTestmodus) {
 
-		JsonElement je = new JsonParser().parse(jsonText);
-		System.out.println(je);
+			InputStream is = new URL(serverUrl).openStream();
+			BufferedReader rd = new BufferedReader(new InputStreamReader(is, Charset.forName("UTF-8")));
+			String jsonText = JsonUtil.readAll(rd);
 
-		System.out.println("Zeit" + JsonUtil.getAtPath(je, "now").getAsString() + " Nachricht Nr. " + JsonUtil.getAtPath(je, "messages").getAsString());
-		System.out.println("Flugzeug:  + " + JsonUtil.getAtPath(je, "aircraft"));
+			JsonElement je = new JsonParser().parse(jsonText);
+			System.out.println(je);
+
+			System.out.println("Zeit" + JsonUtil.getAtPath(je, "now").getAsString() + " Nachricht Nr. " + JsonUtil.getAtPath(je, "messages").getAsString());
+			System.out.println("Flugzeug:  + " + JsonUtil.getAtPath(je, "aircraft"));
+		}
 	}
 
-	@Ignore
 	@Test
 	public void d_lesenViaServerUrl3() throws Exception {
 
-		InputStream is = new URL(DUMP_SERVER_URL).openStream();
-		BufferedReader rd = new BufferedReader(new InputStreamReader(is, Charset.forName("UTF-8")));
-		String jsonText = JsonUtil.readAll(rd);
+		if (lokalerTestmodus) {
 
-		Gson gson = new GsonBuilder().create();
-		Flugzeuge flugzeuge = gson.fromJson(jsonText, Flugzeuge.class);
+			InputStream is = new URL(serverUrl).openStream();
+			BufferedReader rd = new BufferedReader(new InputStreamReader(is, Charset.forName("UTF-8")));
+			String jsonText = JsonUtil.readAll(rd);
 
-		System.out.println(flugzeuge);
-		System.out.println("Anzahl der Flugzeuge in der Datei: " + flugzeuge.getAnzahlFlugzeuge());
+			Gson gson = new GsonBuilder().create();
+			Flugzeuge flugzeuge = gson.fromJson(jsonText, Flugzeuge.class);
 
-		assertTrue(flugzeuge.getAnzahlFlugzeuge() > 0);
+			System.out.println(flugzeuge);
+			System.out.println("Anzahl der Flugzeuge in der Datei: " + flugzeuge.getAnzahlFlugzeuge());
+
+			assertTrue(flugzeuge.getAnzahlFlugzeuge() > 0);
+		}
 	}
 
-	@Ignore
 	@Test
 	public void e_lesenNotfallViaServerUrl4() throws Exception {
 
-		InputStream is = new URL(DUMP_SERVER_URL).openStream();
-		BufferedReader rd = new BufferedReader(new InputStreamReader(is, Charset.forName("UTF-8")));
-		String jsonText = JsonUtil.readAll(rd);
+		if (lokalerTestmodus) {
 
-		Gson gson = new GsonBuilder().create();
-		Flugzeuge flugzeuge = gson.fromJson(jsonText, Flugzeuge.class);
+			InputStream is = new URL(serverUrl).openStream();
+			BufferedReader rd = new BufferedReader(new InputStreamReader(is, Charset.forName("UTF-8")));
+			String jsonText = JsonUtil.readAll(rd);
 
-		System.out.println(flugzeuge.getNotfall());
-		System.out.println("Anzahl Flugzeuge im Notfall: " + flugzeuge.getNotfall().size());
+			Gson gson = new GsonBuilder().create();
+			Flugzeuge flugzeuge = gson.fromJson(jsonText, Flugzeuge.class);
+
+			System.out.println(flugzeuge.getNotfall());
+			System.out.println("Anzahl Flugzeuge im Notfall: " + flugzeuge.getNotfall().size());
+		}
 	}
 
 }

@@ -26,4 +26,8 @@ public class LogAktion {
 		LOG.info("Flugzeuge im Notfall: {}\n", this.flugzeuge.getNotfall());
 	}
 
+	public void error(Exception e) {
+		LOG.error("Fehler: {}", e);
+	}
+
 }

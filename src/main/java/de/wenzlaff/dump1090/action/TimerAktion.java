@@ -17,6 +17,7 @@ import com.google.gson.GsonBuilder;
 
 import de.wenzlaff.dump1090.be.Flugzeuge;
 import de.wenzlaff.dump1090.util.JsonUtil;
+import net.pushover.client.PushoverException;
 
 public class TimerAktion extends TimerTask {
 
@@ -48,6 +49,12 @@ public class TimerAktion extends TimerTask {
 			if (flugzeuge.getNotfall().size() > 0) { // nur wenn im Notfall aktion ausgeben
 				LogAktion log = new LogAktion(flugzeuge);
 				log.run();
+				PushoverAktion pushover = new PushoverAktion(flugzeuge);
+				try {
+					pushover.run();
+				} catch (PushoverException e) {
+					log.error(e);
+				}
 			}
 		} catch (ConnectException e) {
 			LOG.error("Verbindungs Error zu Adresse {} Error: {}", serverUrl, e);
