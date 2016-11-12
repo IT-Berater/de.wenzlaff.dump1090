@@ -7,6 +7,7 @@ import java.util.concurrent.TimeUnit;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import de.wenzlaff.dump1090.action.PushoverAktion;
 import de.wenzlaff.dump1090.action.TimerAktion;
 
 /**
@@ -39,6 +40,8 @@ public class StartFlugabfrage {
 		String ip = args[0];
 		String interval = args[1];
 		LOG.info("Starte abfrage der Flugzeuge die einen Notfall melden. Server IP Adresse: {} Intervall alle: {} Minuten", ip, interval);
+
+		new PushoverAktion(null).sendPushoverNachricht("Starte das de.wenzlaff.dump1090 Programm alle " + interval + " Minuten gegen IP Adresse: " + ip);
 
 		StartFlugabfrage start = new StartFlugabfrage();
 		start.startAnzahlProTagTimer(ip, interval);

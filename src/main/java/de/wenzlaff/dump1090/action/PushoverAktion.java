@@ -18,6 +18,8 @@ import net.pushover.client.Status;
 /**
  * Diese Klasse versendet die Flugzeuginformatioen an Pushover.
  * 
+ * Bei jedem Flugnotfall eine Nachricht.
+ * 
  * @author Thomas Wenzlaff
  *
  */
@@ -59,12 +61,24 @@ public class PushoverAktion {
 			Status result = client.pushMessage(PushoverMessage.builderWithApiToken(pushoverMyApiToken).setUserId(pushoverUserToken).setMessage(nachricht).setDevice("device")
 					.setPriority(MessagePriority.HIGH).setTitle("Alarm!").setUrl(nachrichtenUrl).setTitleForURL("Flugzeug Notfall").setSound("magic").build());
 
-			if (result.getStatus() != 1) { // Status eins ist oK, alles anderer Fehlerhttps://pushover.net/api
+			if (result.getStatus() != 1) { // Status eins ist oK, alles anderer Fehler https://pushover.net/api
 				LOG.error(String.format("Fehler: Pushover Status: %d, request id: %s", result.getStatus(), result.getRequestId()));
 			} else {
 				LOG.info("Pushover Nachricht (Request Id: {} ) erfolgreich versendet um {}.", result.getRequestId(), new Date());
 			}
 
+		}
+	}
+
+	public void sendPushoverNachricht(String nachricht) {
+		PushoverClient client = new PushoverRestClient();
+		Status result = null;
+		try {
+			result = client.pushMessage(
+					PushoverMessage.builderWithApiToken(pushoverMyApiToken).setUserId(pushoverUserToken).setMessage(nachricht).setDevice("device").setPriority(MessagePriority.HIGH)
+							.setTitle("Nachricht von de.wenzlaff.dump1090").setUrl("http://www.wenzlaff.info").setTitleForURL("www.wenzlaff.info").setSound("magic").build());
+		} catch (PushoverException e) {
+			LOG.error("Fehler beim versenden der Pushover Nachricht: {} wegen: {} mit Result: {}", nachricht, e, result);
 		}
 	}
 
