@@ -41,7 +41,8 @@ public class StartFlugabfrage {
 		String interval = args[1];
 		LOG.info("Starte abfrage der Flugzeuge die einen Notfall melden. Server IP Adresse: {} Intervall alle: {} Minuten", ip, interval);
 
-		new PushoverAktion(null).sendPushoverNachricht("Starte das de.wenzlaff.dump1090 Programm alle " + interval + " Minuten gegen IP Adresse: " + ip);
+		PushoverAktion startNachrich = new PushoverAktion(null);
+		startNachrich.sendPushoverNachricht("Starte das de.wenzlaff.dump1090 Programm alle " + interval + " Minuten gegen IP Adresse: " + ip);
 
 		StartFlugabfrage start = new StartFlugabfrage();
 		start.startAnzahlProTagTimer(ip, interval);
