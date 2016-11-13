@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>de.wenzlaff.dump1090</groupId>
 	<artifactId>de.wenzlaff.dump1090</artifactId>
-	<version>0.0.2-SNAPSHOT</version>
+	<version>0.0.3-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
 	<name>Thomas Wenzlaff</name>
@@ -74,16 +74,33 @@
 					</dependency>
 				</dependencies>
 			</plugin>
-			<!-- Raus für Travis <plugin> <groupId>org.apache.maven.plugins</groupId> 
-				<artifactId>maven-gpg-plugin</artifactId> <version>1.6</version> <executions> 
-				<execution> <id>sign-artifacts</id> <phase>verify</phase> <goals> <goal>sign</goal> 
-				</goals> </execution> </executions> </plugin> <plugin> <groupId>org.sonatype.plugins</groupId> 
-				<artifactId>nexus-staging-maven-plugin</artifactId> <version>1.6.3</version> 
-				<extensions>true</extensions> <configuration> <serverId>ossrh</serverId> 
-				<nexusUrl>https://oss.sonatype.org/</nexusUrl> <autoReleaseAfterClose>true</autoReleaseAfterClose> 
-				</configuration> </plugin> -->
-
-			<!-- Make this jar executable -->
+			<!-- 
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-gpg-plugin</artifactId>
+				<version>1.6</version>
+				<executions>
+					<execution>
+						<id>sign-artifacts</id>
+						<phase>verify</phase>
+						<goals>
+							<goal>sign</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.sonatype.plugins</groupId>
+				<artifactId>nexus-staging-maven-plugin</artifactId>
+				<version>1.6.3</version>
+				<extensions>true</extensions>
+				<configuration>
+					<serverId>ossrh</serverId>
+					<nexusUrl>https://oss.sonatype.org/</nexusUrl>
+					<autoReleaseAfterClose>true</autoReleaseAfterClose>
+				</configuration>
+			</plugin>
+ -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-jar-plugin</artifactId>
@@ -197,21 +214,17 @@
 			<scope>compile</scope>
 		</dependency>
 
-		<dependency>
-			<!-- jsoup HTML parser library @ http://jsoup.org/ -->
+		<dependency>		
 			<groupId>org.jsoup</groupId>
 			<artifactId>jsoup</artifactId>
 			<version>1.9.2</version>
 		</dependency>
 
-		<!-- https://mvnrepository.com/artifact/com.github.sps.pushover.net/pushover-client -->
 		<dependency>
 			<groupId>com.github.sps.pushover.net</groupId>
 			<artifactId>pushover-client</artifactId>
 			<version>1.0.0</version>
 		</dependency>
-
-
 	</dependencies>
-
+	
 </project>
