@@ -48,7 +48,7 @@ public class StartFlugabfrage {
 		start.startAnzahlProTagTimer(ip, interval);
 	}
 
-	public StartFlugabfrage() {
+	private StartFlugabfrage() {
 		scheduler = Executors.newScheduledThreadPool(1);
 	}
 
