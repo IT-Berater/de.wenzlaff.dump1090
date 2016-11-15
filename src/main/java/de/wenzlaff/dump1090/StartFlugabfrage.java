@@ -35,7 +35,7 @@ public class StartFlugabfrage {
 			LOG.error("Programm abbruch, da nicht die richtige Anzahl von Parametern übergeben.");
 			LOG.error("Aufruf des StartFlugabfrage Programms mit zwei Parametern: [Server IP] [Intervall in Minuten]");
 			LOG.error("z.B.: java -jar de.wenzlaff.dump1090-0.0.2-SNAPSHOT.jar 10.0.9.32 5");
-			return;
+			System.exit(8);
 		}
 		String ip = args[0];
 		String interval = args[1];
