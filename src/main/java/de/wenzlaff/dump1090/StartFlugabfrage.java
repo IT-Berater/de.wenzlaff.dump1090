@@ -24,7 +24,7 @@ public class StartFlugabfrage {
 	private ScheduledExecutorService scheduler;
 
 	/**
-	 * Start der Abfrage.
+	 * Start der Abfrage. Endet nie. Bricht ab, wenn nicht zwei Parameter übergeben wurden.
 	 * 
 	 * Aufruf z.B. java -jar de.wenzlaff.dump1090-0.0.2-SNAPSHOT.jar 10.0.9.32 5
 	 * 
@@ -41,15 +41,24 @@ public class StartFlugabfrage {
 		String interval = args[1];
 		LOG.info("Starte abfrage der Flugzeuge die einen Notfall melden. Server IP Adresse: {} Intervall alle: {} Minuten", ip, interval);
 
+		new StartFlugabfrage(ip, interval);
+	}
+
+	/**
+	 * Startet die Abfrage
+	 * 
+	 * @param ip
+	 * @param interval
+	 */
+	public StartFlugabfrage(String ip, String interval) {
+
+		// Pushover senden, das es nun läuft ...
 		PushoverAktion startNachrich = new PushoverAktion(null);
 		startNachrich.sendPushoverNachricht("Starte das de.wenzlaff.dump1090 Programm alle " + interval + " Minuten gegen IP Adresse: " + ip);
 
-		StartFlugabfrage start = new StartFlugabfrage();
-		start.startAnzahlProTagTimer(ip, interval);
-	}
-
-	private StartFlugabfrage() {
 		scheduler = Executors.newScheduledThreadPool(1);
+
+		startAnzahlProTagTimer(ip, interval);
 	}
 
 	private void startAnzahlProTagTimer(String ip, String interval) {
