@@ -20,6 +20,8 @@ public class StartFlugabfrage {
 
 	private static final Logger LOG = LoggerFactory.getLogger(StartFlugabfrage.class);
 
+	private static final String VERSION = "0.0.1";
+
 	/** Plant die Ausführungen. */
 	private ScheduledExecutorService scheduler;
 
@@ -32,9 +34,10 @@ public class StartFlugabfrage {
 	 */
 	public static void main(String[] args) {
 		if (args.length != 2) {
-			LOG.error("Programm abbruch, da nicht die richtige Anzahl von Parametern übergeben.");
+			LOG.error("Programm Abbruch, da nicht die richtige Anzahl von Parametern übergeben.");
 			LOG.error("Aufruf des StartFlugabfrage Programms mit zwei Parametern: [Server IP] [Intervall in Minuten]");
 			LOG.error("z.B.: java -jar de.wenzlaff.dump1090-0.0.2-SNAPSHOT.jar 10.0.9.32 5");
+			LOG.error("Details zum Programm de.wenzlaff.dump1090 mit Versions Nr. {} siehe http://www.wenzlaff.info", VERSION);
 			System.exit(8);
 		}
 		String ip = args[0];
@@ -56,13 +59,15 @@ public class StartFlugabfrage {
 		PushoverAktion startNachrich = new PushoverAktion(null);
 		startNachrich.sendPushoverNachricht("Starte das de.wenzlaff.dump1090 Programm alle " + interval + " Minuten gegen IP Adresse: " + ip);
 
+		// erzeugen eines Thread Pools
 		scheduler = Executors.newScheduledThreadPool(1);
 
+		// Abfrage im Interval starten
 		startAnzahlProTagTimer(ip, interval);
 	}
 
 	private void startAnzahlProTagTimer(String ip, String interval) {
-		LOG.info("Frage alle " + interval + " Minuten ab...");
+		LOG.info("Frage nun alle " + interval + " Minuten ohne weitere Ausgaben ab ...");
 		scheduler.scheduleAtFixedRate(new TimerAktion(ip), 0, Long.parseLong(interval), TimeUnit.MINUTES);
 	}
 

@@ -83,7 +83,7 @@ public class PushoverAktion implements Aktion {
 	}
 
 	public void sendPushoverNachricht(String nachricht) {
-		LOG.info("Pushover Aktion mit Nachricht {} ... ", nachricht);
+		LOG.info("Versende Pushover Aktion mit folgender Nachricht: {}", nachricht);
 
 		PushoverClient client = new PushoverRestClient();
 		Status result = null;
