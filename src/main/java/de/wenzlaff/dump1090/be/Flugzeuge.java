@@ -1,7 +1,14 @@
 package de.wenzlaff.dump1090.be;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Properties;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import de.wenzlaff.dump1090.util.Setup;
 
 /**
  * Flugzeuge.
@@ -11,6 +18,14 @@ import java.util.List;
  */
 public class Flugzeuge {
 
+	private static final Logger LOG = LoggerFactory.getLogger(Flugzeuge.class);
+
+	/** Längengrad von Langenhagen in der Tempelhofer Str. 9.742556, Breitengrad 52.438453 mit Höhe 51 m. */
+	private String laengengradMin;
+
+	/** Die maximale Höhe in Fuss (bei Meter mal * 0.3048 z.B. 2000 Fuss * 0.3 = 609 Meter). */
+	private int maxHoehe;
+
 	/** Der Name der Variable muss so sein wie in der JSON Datei. */
 	private String now;
 	private String messages;
@@ -18,6 +33,10 @@ public class Flugzeuge {
 
 	public Flugzeuge() {
 		aircraft = new ArrayList<Flugzeug>();
+
+		Properties properties = Setup.getProperties();
+		laengengradMin = properties.getProperty("pushover_laengengrad_min", "9.742556");
+		maxHoehe = Integer.valueOf(properties.getProperty("pushover_max_hoehe", "2000"));
 	}
 
 	/**
@@ -47,6 +66,48 @@ public class Flugzeuge {
 			}
 		}
 		return notfallFlugzeuge;
+	}
+
+	/**
+	 * Liefert alle Flugzeuge im Landeanflug.
+	 * 
+	 * @return
+	 */
+	public List<Flugzeug> getFlugzeugeImLandeanflug() {
+
+		List<Flugzeug> flugzeugeImLandeanflug = new ArrayList<Flugzeug>();
+
+		for (Flugzeug flugzeug : aircraft) {
+			if (isImLandeanflug(flugzeug)) {
+				LOG.debug("OK, Flugzeug im Landeanflug erfasst: {}", flugzeug);
+				flugzeugeImLandeanflug.add(flugzeug);
+			}
+		}
+		return flugzeugeImLandeanflug;
+	}
+
+	/**
+	 * Liefert true, wenn ein Flugzeug im Landeanflug ist, sonst false.
+	 * 
+	 * @param flugzeug
+	 * @return
+	 */
+	private boolean isImLandeanflug(Flugzeug flugzeug) {
+		boolean status = false;
+
+		if (flugzeug.getAltitude() != null) {
+			// nur Flugzeuge die kleiner als die maximale Höhe sind
+			if (flugzeug.getAltitude().intValue() < maxHoehe) {
+				// nur Flugzeuge in der Luft, über den Boden
+				if (flugzeug.getAltitude().intValue() > 0) {
+					// nur Flugzeuge die von Osten kommen
+					if (flugzeug.getLongitude().compareTo(new BigDecimal(laengengradMin)) > 0) {
+						status = true;
+					}
+				}
+			}
+		}
+		return status;
 	}
 
 	public void addFlugzeug(Flugzeug f) {

@@ -25,6 +25,9 @@ public class StartFlugabfrage {
 	/** Plant die Ausführungen. */
 	private ScheduledExecutorService scheduler;
 
+	private String ip;
+	private String interval;
+
 	/**
 	 * Start der Abfrage. Endet nie. Bricht ab, wenn nicht zwei Parameter übergeben wurden.
 	 * 
@@ -44,7 +47,8 @@ public class StartFlugabfrage {
 		String interval = args[1];
 		LOG.info("Starte abfrage der Flugzeuge die einen Notfall melden. Server IP Adresse: {} Intervall alle: {} Minuten", ip, interval);
 
-		new StartFlugabfrage(ip, interval);
+		StartFlugabfrage task = new StartFlugabfrage(ip, interval);
+		task.startEndlosNotfallabfrage();
 	}
 
 	/**
@@ -54,16 +58,21 @@ public class StartFlugabfrage {
 	 * @param interval
 	 */
 	public StartFlugabfrage(String ip, String interval) {
+		this.ip = ip;
+		this.interval = interval;
 
 		// Pushover senden, das es nun läuft ...
-		PushoverAktion startNachrich = new PushoverAktion(null);
+		PushoverAktion startNachrich = new PushoverAktion();
 		startNachrich.sendPushoverNachricht("Starte das de.wenzlaff.dump1090 Programm alle " + interval + " Minuten gegen IP Adresse: " + ip);
 
 		// erzeugen eines Thread Pools
 		scheduler = Executors.newScheduledThreadPool(1);
 
+	}
+
+	public void startEndlosNotfallabfrage() {
 		// Abfrage im Interval starten
-		startAnzahlProTagTimer(ip, interval);
+		startAnzahlProTagTimer(this.ip, this.interval);
 	}
 
 	private void startAnzahlProTagTimer(String ip, String interval) {

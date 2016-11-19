@@ -1,5 +1,6 @@
 package de.wenzlaff.dump1090.be;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 /**
@@ -57,11 +58,11 @@ public class Flugzeug {
 	/** lon: the aircraft position in decimal degrees */
 	private String lon;
 	/**
-	 * altitude: the aircraft altitude in feet, or "ground" if it is reporting it is on the ground
+	 * altitude: the aircraft altitude in feet (Fuss), or "ground" if it is reporting it is on the ground
 	 */
 	private String altitude;
 	/**
-	 * speed: reported speed in kt. This is usually speed over ground, but might be IAS - you can't tell the difference here, sorry!
+	 * speed: reported speed in kt (Knoten). This is usually speed over ground, but might be IAS - you can't tell the difference here, sorry!
 	 */
 	private String speed;
 	/** flight: the flight name / callsign */
@@ -118,34 +119,103 @@ public class Flugzeug {
 		this.squawk = luftnotfall.getCode();
 	}
 
+	/**
+	 * Get Breitengrade. Lat. N-S
+	 * 
+	 * @return
+	 */
 	public String getLat() {
 		return lat;
 	}
 
+	/**
+	 * Set Breitengrad. Lat. N-S. z.B. 52,439444
+	 * 
+	 * @param lat
+	 */
 	public void setLat(String lat) {
 		this.lat = lat;
 	}
 
+	/**
+	 * Längengrade. Lon. z.B. 9,74281454
+	 * 
+	 * @return
+	 */
 	public String getLon() {
 		return lon;
 	}
 
+	/**
+	 * Längengrade. Lon. z.B. 9,74281454
+	 * 
+	 * @return
+	 */
+	public BigDecimal getLongitude() {
+		if (this.lon != null) {
+			return new BigDecimal(this.lon);
+		} else {
+			return new BigDecimal("0");
+		}
+	}
+
+	/**
+	 * Set Längengrade.
+	 * 
+	 * @param lon
+	 */
 	public void setLon(String lon) {
 		this.lon = lon;
 	}
 
-	public String getAltitude() {
+	/**
+	 * Höhe. Kann null sein wenn keine Höhe angegeben.
+	 * 
+	 * @return
+	 */
+	public String getAltitudeAsString() {
 		return altitude;
 	}
 
+	/**
+	 * Höhe in Fuss. Kann null sein wenn keine Höhe angegeben.
+	 * 
+	 * @return
+	 */
+	public Integer getAltitude() {
+		Integer hoehe = null;
+		if (this.altitude != null) {
+
+			try {
+				hoehe = Integer.valueOf(altitude);
+			} catch (NumberFormatException e) {
+				// unbekannte Höhe, dann bleibt es bei null
+			}
+		}
+		return hoehe;
+	}
+
+	/**
+	 * Set Höhe in Fuss.
+	 * 
+	 * @param altitude
+	 */
 	public void setAltitude(String altitude) {
 		this.altitude = altitude;
+		if (this.altitude != null) {
+			this.altitude = this.altitude.trim();
+		}
 	}
 
 	public String getSpeed() {
 		return speed;
 	}
 
+	/**
+	 * Setzt die Geschwindigkeit in Meilen.
+	 * 
+	 * @param speed
+	 */
 	public void setSpeed(String speed) {
 		this.speed = speed;
 	}
@@ -300,6 +370,27 @@ public class Flugzeug {
 		this.rssi = rssi;
 	}
 
+	/**
+	 * Umrechnung von Knoten nach Km/h.
+	 * 
+	 * @param knoten
+	 * @return BigDecimal mit Km/h
+	 */
+	public BigDecimal getKmVonKnoten(String meilen) {
+		return new BigDecimal(meilen.trim()).multiply(new BigDecimal(1.852)).setScale(0, BigDecimal.ROUND_UP);
+	}
+
+	/**
+	 * Umgrechnung von Fuss nach Meter.
+	 * 
+	 * @param String
+	 *            mit der Länge in Fuss
+	 * @return BigDecimal mit Meter
+	 */
+	public BigDecimal getMeterVonFuss(String fuss) {
+		return new BigDecimal(fuss.trim()).multiply(new BigDecimal(0.3048)).setScale(0, BigDecimal.ROUND_UP);
+	}
+
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
@@ -327,12 +418,12 @@ public class Flugzeug {
 		if (altitude != null) {
 			builder.append("altitude=");
 			builder.append(altitude);
-			builder.append(", ");
+			builder.append(" Fuss, ");
 		}
 		if (speed != null) {
 			builder.append("speed=");
 			builder.append(speed);
-			builder.append(", ");
+			builder.append(" Knoten/h, ");
 		}
 		if (flight != null) {
 			builder.append("flight=");
@@ -385,6 +476,52 @@ public class Flugzeug {
 		}
 		builder.append("]");
 		builder.append("\n");
+		return builder.toString();
+	}
+
+	/**
+	 * Liefert das Format für die Nachrichten.
+	 * 
+	 * @return String mit dem Flugzeugformat.
+	 */
+	public String getFormat() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("Flugzeug ");
+
+		if (flight != null) {
+			builder.append("Flug: ");
+			builder.append(flight.trim());
+			builder.append(", ");
+		}
+		if (altitude != null) {
+			builder.append("Höhe: ");
+			builder.append(getMeterVonFuss(altitude));
+			builder.append(" m, ");
+		}
+		if (speed != null) {
+			builder.append("Geschwindigkeit: ");
+			builder.append(getKmVonKnoten(speed));
+			builder.append(" km/h, ");
+		}
+		if (hex != null) {
+			builder.append("HEX: ");
+			builder.append(hex.toUpperCase());
+			builder.append(", ");
+		}
+		if (squawk != null) {
+			builder.append("Squawk: ");
+			builder.append(squawk);
+			builder.append(", ");
+		}
+		if (lat != null) {
+			builder.append("Lat: ");
+			builder.append(lat);
+			builder.append(", ");
+		}
+		if (lon != null) {
+			builder.append("Lon: ");
+			builder.append(lon);
+		}
 		return builder.toString();
 	}
 

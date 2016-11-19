@@ -132,4 +132,9 @@ public class FlugzeugeTest {
 		assertEquals(0, this.flugzeuge.getAnzahlFlugzeuge());
 	}
 
+	@Test
+	public void getFlugzeugeImLandeanflug() {
+		assertEquals(0, this.flugzeuge.getFlugzeugeImLandeanflug().size());
+	}
+
 }
