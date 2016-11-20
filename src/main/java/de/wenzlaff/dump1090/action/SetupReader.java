@@ -18,6 +18,8 @@ public class SetupReader {
 
 	private static final Logger LOG = LoggerFactory.getLogger(SetupReader.class);
 
+	private static Properties properties;
+
 	/**
 	 * Liefert die Setup Einstellungen.
 	 * 
@@ -25,17 +27,19 @@ public class SetupReader {
 	 */
 	public static Properties getProperties() {
 
-		Properties properties;
-		try {
-			FileReader file = new FileReader(PROPERTIES_DATEINAME);
-			properties = new Properties();
-			properties.load(file);
+		if (properties == null) {
+			try {
+				FileReader file = new FileReader(PROPERTIES_DATEINAME);
+				properties = new Properties();
+				properties.load(file);
+				LOG.info("Lese setup aus Datei {}) ein.", PROPERTIES_DATEINAME);
 
-		} catch (Exception e) {
-			LOG.error("Konnte keine Properties-Datei finden. Error: {}", e);
-			properties = new Properties();
+			} catch (Exception e) {
+				LOG.error("Konnte keine Properties-Datei {} finden. Error: {}", PROPERTIES_DATEINAME, e);
+				properties = new Properties();
+				LOG.info("Verwende default Setup.");
+			}
 		}
-
 		return properties;
 	}
 

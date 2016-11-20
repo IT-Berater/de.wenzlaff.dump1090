@@ -20,13 +20,16 @@ public class StartFlugabfrage {
 
 	private static final Logger LOG = LoggerFactory.getLogger(StartFlugabfrage.class);
 
-	private static final String VERSION = "0.0.1";
+	private static final String VERSION = "0.0.3";
 
 	/** Plant die Ausführungen. */
 	private ScheduledExecutorService scheduler;
 
-	private String ip;
-	private String interval;
+	/** Die IP Adresse des Servers wo Dump1090 läuft. z.B. 10.0.9.32 */
+	private String ipAdresse;
+
+	/** Das Abfrage Interval in Minuten. */
+	private String intervalInMinuten;
 
 	/**
 	 * Start der Abfrage. Endet nie. Bricht ab, wenn nicht zwei Parameter übergeben wurden.
@@ -54,30 +57,29 @@ public class StartFlugabfrage {
 	/**
 	 * Startet die Abfrage
 	 * 
-	 * @param ip
-	 * @param interval
+	 * @param ipAdresse
+	 * @param intervalInMinuten
 	 */
-	public StartFlugabfrage(String ip, String interval) {
-		this.ip = ip;
-		this.interval = interval;
+	public StartFlugabfrage(String ipAdresse, String intervalInMinuten) {
+		this.ipAdresse = ipAdresse;
+		this.intervalInMinuten = intervalInMinuten;
 
 		// Pushover senden, das es nun läuft ...
 		PushoverAktion startNachrich = new PushoverAktion();
-		startNachrich.sendPushoverNachricht("Starte das de.wenzlaff.dump1090 Programm alle " + interval + " Minuten gegen IP Adresse: " + ip);
+		startNachrich.sendPushoverNachricht("Starte das de.wenzlaff.dump1090 " + VERSION + " Programm alle " + this.intervalInMinuten + " Minuten gegen IP Adresse: " + ipAdresse);
 
 		// erzeugen eines Thread Pools
 		scheduler = Executors.newScheduledThreadPool(1);
-
 	}
 
 	public void startEndlosNotfallabfrage() {
 		// Abfrage im Interval starten
-		startAnzahlProTagTimer(this.ip, this.interval);
+		startAnzahlProTagTimer(this.ipAdresse, this.intervalInMinuten);
 	}
 
-	private void startAnzahlProTagTimer(String ip, String interval) {
-		LOG.info("Frage nun alle " + interval + " Minuten ohne weitere Ausgaben ab ...");
-		scheduler.scheduleAtFixedRate(new TimerAktion(ip), 0, Long.parseLong(interval), TimeUnit.MINUTES);
+	private void startAnzahlProTagTimer(String ipAdresse, String intervalInMinuten) {
+		LOG.info("Frage nun alle " + intervalInMinuten + " Minuten ohne weitere Ausgaben ab ...");
+		scheduler.scheduleAtFixedRate(new TimerAktion(ipAdresse), 0, Long.parseLong(intervalInMinuten), TimeUnit.MINUTES);
 	}
 
 }
