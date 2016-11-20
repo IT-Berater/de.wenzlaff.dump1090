@@ -1,4 +1,4 @@
-package de.wenzlaff.dump1090.util;
+package de.wenzlaff.dump1090.action;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -7,12 +7,12 @@ import java.io.Reader;
 import com.google.gson.JsonElement;
 
 /**
- * Json Util.
+ * Json Reader.
  * 
  * @author Thomas Wenzlaff
  *
  */
-public class JsonUtil {
+public class JsonReader {
 
 	public static String readAll(Reader rd) throws IOException {
 

@@ -21,7 +21,6 @@ import com.google.gson.GsonBuilder;
 
 import de.wenzlaff.dump1090.be.Flugzeug;
 import de.wenzlaff.dump1090.be.Flugzeuge;
-import de.wenzlaff.dump1090.util.JsonUtil;
 
 /**
  * Einlesen der aircraft.json Datei von einem Server.
@@ -55,7 +54,7 @@ public class TimerAktion extends TimerTask implements Aktion {
 			is = new URL(serverUrl).openStream();
 
 			BufferedReader rd = new BufferedReader(new InputStreamReader(is, Charset.forName("UTF-8")));
-			String aircraftDatei = JsonUtil.readAll(rd);
+			String aircraftDatei = JsonReader.readAll(rd);
 
 			Gson gson = new GsonBuilder().create();
 			Flugzeuge flugzeuge = gson.fromJson(aircraftDatei, Flugzeuge.class);

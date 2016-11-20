@@ -9,7 +9,6 @@ import org.slf4j.LoggerFactory;
 import de.wenzlaff.dump1090.be.Flugzeug;
 import de.wenzlaff.dump1090.be.Flugzeuge;
 import de.wenzlaff.dump1090.be.PushoverSound;
-import de.wenzlaff.dump1090.util.Setup;
 import net.pushover.client.MessagePriority;
 import net.pushover.client.PushoverClient;
 import net.pushover.client.PushoverException;
@@ -56,7 +55,7 @@ public class PushoverAktion implements Aktion {
 	}
 
 	private void setProperties() {
-		Properties properties = Setup.getProperties();
+		Properties properties = SetupReader.getProperties();
 		pushoverUserToken = properties.getProperty("pushover_user_id_token");
 		pushoverMyApiToken = properties.getProperty("pushover_my_app_api_token");
 		pushoverNachrichtUrl = properties.getProperty("pushover_nachricht_url");

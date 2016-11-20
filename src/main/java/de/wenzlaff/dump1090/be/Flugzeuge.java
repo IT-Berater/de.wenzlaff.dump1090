@@ -8,7 +8,7 @@ import java.util.Properties;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import de.wenzlaff.dump1090.util.Setup;
+import de.wenzlaff.dump1090.action.SetupReader;
 
 /**
  * Flugzeuge.
@@ -34,7 +34,7 @@ public class Flugzeuge {
 	public Flugzeuge() {
 		aircraft = new ArrayList<Flugzeug>();
 
-		Properties properties = Setup.getProperties();
+		Properties properties = SetupReader.getProperties();
 		laengengradMin = properties.getProperty("pushover_laengengrad_min", "9.742556");
 		maxHoehe = Integer.valueOf(properties.getProperty("pushover_max_hoehe", "2000"));
 	}

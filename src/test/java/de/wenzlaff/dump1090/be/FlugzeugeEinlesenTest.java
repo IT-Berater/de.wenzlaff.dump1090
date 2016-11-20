@@ -23,8 +23,8 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
 
-import de.wenzlaff.dump1090.util.JsonUtil;
-import de.wenzlaff.dump1090.util.Setup;
+import de.wenzlaff.dump1090.action.JsonReader;
+import de.wenzlaff.dump1090.action.SetupReader;
 
 /**
  * Test Klasse mit JUnit 5.
@@ -50,7 +50,7 @@ public class FlugzeugeEinlesenTest {
 
 	@Before
 	public void ini() {
-		Properties p = Setup.getProperties();
+		Properties p = SetupReader.getProperties();
 		String ip = p.getProperty("dump1090_server_ip");
 		serverUrl = "http://" + ip + "/dump1090/data/aircraft.json";
 		lokalerTestmodus = Boolean.valueOf(p.getProperty("lokaler_testmodus", "false"));
@@ -90,13 +90,13 @@ public class FlugzeugeEinlesenTest {
 
 			InputStream is = new URL(serverUrl).openStream();
 			BufferedReader rd = new BufferedReader(new InputStreamReader(is, Charset.forName("UTF-8")));
-			String jsonText = JsonUtil.readAll(rd);
+			String jsonText = JsonReader.readAll(rd);
 
 			JsonElement je = new JsonParser().parse(jsonText);
 			System.out.println(je);
 
-			System.out.println("Zeit" + JsonUtil.getAtPath(je, "now").getAsString() + " Nachricht Nr. " + JsonUtil.getAtPath(je, "messages").getAsString());
-			System.out.println("Flugzeug:  + " + JsonUtil.getAtPath(je, "aircraft"));
+			System.out.println("Zeit" + JsonReader.getAtPath(je, "now").getAsString() + " Nachricht Nr. " + JsonReader.getAtPath(je, "messages").getAsString());
+			System.out.println("Flugzeug:  + " + JsonReader.getAtPath(je, "aircraft"));
 		}
 	}
 
@@ -107,7 +107,7 @@ public class FlugzeugeEinlesenTest {
 
 			InputStream is = new URL(serverUrl).openStream();
 			BufferedReader rd = new BufferedReader(new InputStreamReader(is, Charset.forName("UTF-8")));
-			String jsonText = JsonUtil.readAll(rd);
+			String jsonText = JsonReader.readAll(rd);
 
 			Gson gson = new GsonBuilder().create();
 			Flugzeuge flugzeuge = gson.fromJson(jsonText, Flugzeuge.class);
@@ -126,7 +126,7 @@ public class FlugzeugeEinlesenTest {
 
 			InputStream is = new URL(serverUrl).openStream();
 			BufferedReader rd = new BufferedReader(new InputStreamReader(is, Charset.forName("UTF-8")));
-			String jsonText = JsonUtil.readAll(rd);
+			String jsonText = JsonReader.readAll(rd);
 
 			Gson gson = new GsonBuilder().create();
 			Flugzeuge flugzeuge = gson.fromJson(jsonText, Flugzeuge.class);

@@ -1,4 +1,4 @@
-package de.wenzlaff.dump1090.util;
+package de.wenzlaff.dump1090.action;
 
 import java.io.FileReader;
 import java.util.Properties;
@@ -11,11 +11,11 @@ import org.slf4j.LoggerFactory;
  * @author Thomas Wenzlaff
  *
  */
-public class Setup {
+public class SetupReader {
 
 	private static final String PROPERTIES_DATEINAME = "de.wenzlaff.dump1090.properties";
 
-	private static final Logger LOG = LoggerFactory.getLogger(Setup.class);
+	private static final Logger LOG = LoggerFactory.getLogger(SetupReader.class);
 
 	public static Properties getProperties() {
 
