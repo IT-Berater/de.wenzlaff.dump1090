@@ -7,6 +7,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
+ * Reader für das initiale Setup.
  * 
  * @author Thomas Wenzlaff
  *
@@ -17,6 +18,11 @@ public class SetupReader {
 
 	private static final Logger LOG = LoggerFactory.getLogger(SetupReader.class);
 
+	/**
+	 * Liefert die Setup Einstellungen.
+	 * 
+	 * @return Properties aus der Datei oder default.
+	 */
 	public static Properties getProperties() {
 
 		Properties properties;
