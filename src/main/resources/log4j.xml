@@ -33,6 +33,9 @@
      <logger name="org.apache">
     	<level value="warn" /> 
     </logger>
+        <logger name="de.wenzlaff.dump1090.action.TimerAktion">
+    	<level value="info" /> 
+    </logger>
    
    <root>
 		<level value="DEBUG" />

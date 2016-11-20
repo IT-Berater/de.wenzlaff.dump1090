@@ -104,7 +104,7 @@ public class PushoverAktion implements Aktion {
 		try {
 			result = client.pushMessage(PushoverMessage.builderWithApiToken(pushoverMyApiToken).setUserId(pushoverUserToken).setMessage(nachricht).setDevice(pushoverDevice)
 					.setPriority(MessagePriority.HIGH).setTitle("Nachricht von de.wenzlaff.dump1090").setUrl("http://www.wenzlaff.info").setTitleForURL("www.wenzlaff.info")
-					.setSound(PushoverSound.incoming.name()).build()); // sounds siehe https://pushover.net/api#sounds
+					.setSound(PushoverSound.magic.name()).build()); // sounds siehe https://pushover.net/api#sounds
 		} catch (PushoverException e) {
 			LOG.error("Fehler beim versenden der Pushover Nachricht: {} wegen: {} mit Result: {}", nachricht, e, result);
 		}
@@ -122,7 +122,7 @@ public class PushoverAktion implements Aktion {
 		try {
 			result = client.pushMessage(PushoverMessage.builderWithApiToken(pushoverMyApiToken).setUserId(pushoverUserToken).setMessage(nachricht).setDevice(pushoverDevice)
 					.setPriority(MessagePriority.HIGH).setTitle("Nachricht von de.wenzlaff.dump1090").setUrl(nachrichtenUrl).setTitleForURL(pushoverNachrichtUrl)
-					.setSound(PushoverSound.echo.name()).build()); // sounds siehe https://pushover.net/api#sounds
+					.setSound(PushoverSound.magic.name()).build()); // sounds siehe https://pushover.net/api#sounds
 		} catch (PushoverException e) {
 			LOG.error("Fehler beim versenden der Pushover Nachricht: {} wegen: {} mit Result: {}", nachricht, e, result);
 		}
