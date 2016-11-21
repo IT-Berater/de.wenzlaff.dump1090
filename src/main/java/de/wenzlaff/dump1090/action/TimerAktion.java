@@ -6,7 +6,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.ConnectException;
 import java.net.URL;
-import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -49,12 +49,13 @@ public class TimerAktion extends TimerTask implements Aktion {
 	@Override
 	public void run() {
 		LOG.debug("Timer Aktion {}", new Date());
-		InputStream is;
-		try {
-			is = new URL(serverUrl).openStream();
 
-			BufferedReader rd = new BufferedReader(new InputStreamReader(is, Charset.forName("UTF-8")));
-			String aircraftDatei = JsonReader.readAll(rd);
+		try {
+			InputStream is = new URL(serverUrl).openStream();
+
+			BufferedReader br = new BufferedReader(new InputStreamReader(is, StandardCharsets.UTF_8));
+			String aircraftDatei = JsonReader.readAll(br);
+			br.close();
 
 			Gson gson = new GsonBuilder().create();
 			Flugzeuge flugzeuge = gson.fromJson(aircraftDatei, Flugzeuge.class);
