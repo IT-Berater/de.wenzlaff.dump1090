@@ -36,7 +36,7 @@ public class Flugzeuge {
 
 		Properties properties = SetupReader.getProperties();
 		laengengradMin = properties.getProperty("pushover_laengengrad_min", "9.742556");
-		maxHoehe = Integer.valueOf(properties.getProperty("pushover_max_hoehe", "2000"));
+		maxHoehe = Integer.valueOf(properties.getProperty("pushover_max_hoehe", "3000"));
 	}
 
 	/**
