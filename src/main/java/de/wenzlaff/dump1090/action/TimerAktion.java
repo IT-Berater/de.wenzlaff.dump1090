@@ -44,11 +44,15 @@ public class TimerAktion extends TimerTask implements Aktion {
 	public TimerAktion(String ip) {
 		setUrl(ip);
 		benachrichtigteFlugzeuge = new HashMap<String, Flugzeug>();
+
 	}
 
 	@Override
 	public void run() {
-		LOG.debug("Timer Aktion {}", new Date());
+		Date aktuelle = new Date();
+		LOG.debug("Timer Aktion {}", aktuelle);
+		// wir geben den Thread mal einen Namen
+		Thread.currentThread().setName("Dump1090-TimerAktion-" + aktuelle);
 
 		try {
 			InputStream is = new URL(serverUrl).openStream();

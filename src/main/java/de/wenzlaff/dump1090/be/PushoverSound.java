@@ -3,33 +3,58 @@ package de.wenzlaff.dump1090.be;
 /**
  * Alle möglichen Pushover Sounds.
  * 
- * Siehe https://pushover.net/api#sounds
+ * Siehe https:
+ * 
+ * pushover.net/api#sounds
  * 
  * @author Thomas Wenzlaff
  *
  */
 public enum PushoverSound {
 
-	pushover, // Pushover (default)
-	bike, // Bike
-	bugle, // Bugle
-	cashregister, // Cash Register
-	classical, // Classical
-	cosmic, // Cosmic
-	falling, // Falling
-	gamelan, // Gamelan
-	incoming, // Incoming
-	intermission, // Intermission
-	magic, // Magic
-	mechanical, // Mechanical
-	pianobar, // Piano Bar
-	siren, // Siren
-	spacealarm, // Space Alarm
-	tugboat, // Tug Boat
-	alien, // Alien Alarm (long)
-	climb, // Climb (long)
-	persistent, // Persistent (long)
-	echo, // Pushover Echo (long)
-	updown, // Up Down (long)
-	none, // None (silent)
+	/** Pushover (default) */
+	pushover,
+	/** Bike */
+	bike,
+	/** Bugle */
+	/** Bugle */
+	bugle,
+	/** Cash Register */
+	cashregister,
+	/** Classical */
+	classical,
+	/** Cosmic */
+	cosmic,
+	/** Falling */
+	falling,
+	/** Gamelan */
+	gamelan,
+	/** Incoming */
+	incoming,
+	/** Intermission */
+	intermission,
+	/** Magic */
+	magic,
+	/** Mechanical */
+	mechanical,
+	/** Piano Bar */
+	pianobar,
+	/** Siren */
+	siren,
+	/** Space Alarm */
+	spacealarm,
+	/** Tug Boat */
+	tugboat,
+	/** Alien Alarm (long) */
+	alien,
+	/** Climb (long) */
+	climb,
+	/** Persistent (long) */
+	persistent,
+	/** Pushover Echo (long) */
+	echo,
+	/** Up Down (long) */
+	updown,
+	/** None (silent) */
+	none,
 }

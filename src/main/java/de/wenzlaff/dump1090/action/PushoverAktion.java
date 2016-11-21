@@ -59,6 +59,7 @@ public class PushoverAktion implements Aktion {
 		pushoverUserToken = properties.getProperty("pushover_user_id_token");
 		pushoverMyApiToken = properties.getProperty("pushover_my_app_api_token");
 		pushoverNachrichtUrl = properties.getProperty("pushover_nachricht_url");
+		// TODO: für mehrere Geräte
 		pushoverDevice = properties.getProperty("pushover_device", "device");
 	}
 
