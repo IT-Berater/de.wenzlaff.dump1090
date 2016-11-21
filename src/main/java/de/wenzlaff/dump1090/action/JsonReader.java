@@ -25,9 +25,9 @@ public class JsonReader {
 		return sb.toString();
 	}
 
-	public static JsonElement getAtPath(JsonElement e, String path) {
+	public static JsonElement getAtPath(JsonElement element, String path) {
 
-		JsonElement current = e;
+		JsonElement current = element;
 		String ss[] = path.split("/");
 		for (int i = 0; i < ss.length; i++) {
 			current = current.getAsJsonObject().get(ss[i]);
