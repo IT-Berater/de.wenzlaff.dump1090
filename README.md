@@ -18,7 +18,7 @@ Flugzeuge
 
 Luftnotfall
 
-<img src="http://blog.wenzlaff.de/wp-content/uploads/2016/11/flughafen-eddv.png" alt="EDDV" height="937px" width="1446px" />
+![Langenhagen](/bilder/flughafen-eddv.png)
 
 
 Details siehe [http://blog.wenzlaff.de/]
