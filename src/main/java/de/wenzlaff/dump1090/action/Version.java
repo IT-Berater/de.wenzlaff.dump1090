@@ -15,7 +15,7 @@ public class Version {
 
 	private static final String ARTIFACT_ID = "de.wenzlaff.dump1090";
 
-	public synchronized String getVersion() {
+	public String getVersion() {
 		String version = null;
 
 		// wir lesen zuerst aus der pom.propertie Datei, die enthält z.B.
