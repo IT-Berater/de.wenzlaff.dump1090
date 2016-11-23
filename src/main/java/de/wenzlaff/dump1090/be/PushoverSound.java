@@ -17,7 +17,6 @@ public enum PushoverSound {
 	/** Bike */
 	bike,
 	/** Bugle */
-	/** Bugle */
 	bugle,
 	/** Cash Register */
 	cashregister,
