@@ -79,7 +79,7 @@ public class Flugzeuge {
 
 		for (Flugzeug flugzeug : aircraft) {
 			if (isImLandeanflug(flugzeug)) {
-				LOG.debug("OK, Flugzeug im Landeanflug erfasst: {}", flugzeug);
+				LOG.debug("OK, im Landeanflug wurde erfasst das {}", flugzeug);
 				flugzeugeImLandeanflug.add(flugzeug);
 			}
 		}
@@ -187,7 +187,6 @@ public class Flugzeuge {
 			builder.append(aircraft);
 		}
 		builder.append("]");
-		builder.append("\n");
 		return builder.toString();
 	}
 

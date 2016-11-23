@@ -475,7 +475,6 @@ public class Flugzeug {
 			builder.append(tisb);
 		}
 		builder.append("]");
-		builder.append("\n");
 		return builder.toString();
 	}
 

@@ -81,7 +81,7 @@ public class PushoverAktion implements Aktion {
 			for (int j = 0; j < pushoverDevices.length; j++) {
 				Status result = null;
 				try {
-					// Senden der Nachricht
+					// Senden der Nachricht per Pushover
 					result = client.pushMessage(PushoverMessage.builderWithApiToken(pushoverMyApiToken).setUserId(pushoverUserToken).setMessage(nachricht)
 							.setDevice(pushoverDevices[j]).setPriority(MessagePriority.HIGH).setTitle("Flugzeug - Alarm!").setUrl(nachrichtenUrl).setTitleForURL("Flugzeug Notfall")
 							.setSound(PushoverSound.magic.name()).build());

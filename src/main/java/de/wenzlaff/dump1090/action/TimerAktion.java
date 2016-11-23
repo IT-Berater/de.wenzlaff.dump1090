@@ -64,7 +64,7 @@ public class TimerAktion extends TimerTask implements Aktion {
 			Gson gson = new GsonBuilder().create();
 			Flugzeuge flugzeuge = gson.fromJson(aircraftDatei, Flugzeuge.class);
 
-			if (flugzeuge.getNotfall().size() > 0) { // nur wenn im Notfall aktion ausgeben
+			if (flugzeuge.getNotfall().size() > 0) { // nur wenn im Notfall, dann aktion ausgeben
 				LogAktion log = new LogAktion(flugzeuge);
 				log.run();
 				PushoverAktion pushover = new PushoverAktion(flugzeuge);
@@ -75,17 +75,17 @@ public class TimerAktion extends TimerTask implements Aktion {
 			// Nachricht wenn Flugzeug in Hannover landet
 			List<Flugzeug> alleImLandeAnflug = flugzeuge.getFlugzeugeImLandeanflug();
 			if (alleImLandeAnflug.size() > 0) {
-
-				LOG.debug("Anzahl Flugzeuge in Landeanflug: " + alleImLandeAnflug);
-
 				// Flugzeuge merken
 				for (int i = 0; i < alleImLandeAnflug.size(); i++) {
-					Flugzeug f = alleImLandeAnflug.get(i);
+					Flugzeug flugzeug = alleImLandeAnflug.get(i);
 					// und wenn noch nicht erfolgt, einmal Nachricht senden
-					if (!this.benachrichtigteFlugzeuge.containsKey(f.getHex())) {
-						LOG.info("---------> Nachricht senden: {}", f);
-						this.benachrichtigteFlugzeuge.put(f.getHex(), f);
-						PushoverAktion pushover = new PushoverAktion(f);
+					String keyHex = flugzeug.getHex().trim();
+
+					if (!this.benachrichtigteFlugzeuge.containsKey(keyHex)) {
+						LOG.info("Nachricht senden: {}", flugzeug);
+
+						this.benachrichtigteFlugzeuge.put(keyHex, flugzeug);
+						PushoverAktion pushover = new PushoverAktion(flugzeug);
 						pushover.sendPushoverNachricht();
 					}
 				}
@@ -93,7 +93,7 @@ public class TimerAktion extends TimerTask implements Aktion {
 
 			// löschen der gemerkten Flugzeuge
 			if (this.benachrichtigteFlugzeuge.values().size() > MAX_GESPEICHERTE_FLUGZEUGE) {
-				LOG.info("---------> LÖSCHE alle {} Flugzeuge im Speicher.", MAX_GESPEICHERTE_FLUGZEUGE);
+				LOG.info("LÖSCHE alle {} Flugzeuge im Speicher.", MAX_GESPEICHERTE_FLUGZEUGE);
 				this.benachrichtigteFlugzeuge.clear();
 			}
 
