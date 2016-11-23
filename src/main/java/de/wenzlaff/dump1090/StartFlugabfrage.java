@@ -1,7 +1,5 @@
 package de.wenzlaff.dump1090;
 
-import java.io.InputStream;
-import java.util.Properties;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
@@ -83,40 +81,6 @@ public class StartFlugabfrage {
 	private void startAnzahlProTagTimer(String ipAdresse, String intervalInMinuten) {
 		LOG.info("Frage nun alle " + intervalInMinuten + " Minuten ohne weitere Ausgaben ab ...");
 		scheduler.scheduleAtFixedRate(new TimerAktion(ipAdresse), 0, Long.parseLong(intervalInMinuten), TimeUnit.MINUTES);
-	}
-
-	private synchronized String getVersion() {
-		String version = null;
-
-		// try to load from maven properties first
-		try {
-			Properties p = new Properties();
-			InputStream is = getClass().getResourceAsStream("/META-INF/maven/de.wenzlaff.dump1090/de/wenzlaff/dump1090/pom.properties");
-			if (is != null) {
-				p.load(is);
-				version = p.getProperty("version", "");
-			}
-		} catch (Exception e) {
-			// ignore
-		}
-
-		// fallback to using Java API
-		if (version == null) {
-			Package aPackage = getClass().getPackage();
-			if (aPackage != null) {
-				version = aPackage.getImplementationVersion();
-				if (version == null) {
-					version = aPackage.getSpecificationVersion();
-				}
-			}
-		}
-
-		if (version == null) {
-			// we could not compute the version so use a blank
-			version = "";
-		}
-
-		return version;
 	}
 
 }
