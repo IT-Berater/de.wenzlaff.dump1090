@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>de.wenzlaff.dump1090</groupId>
 	<artifactId>de.wenzlaff.dump1090</artifactId>
-	<version>0.0.3-SNAPSHOT</version>
+	<version>0.0.5-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
 	<name>Thomas Wenzlaff</name>
@@ -74,7 +74,8 @@
 					</dependency>
 				</dependencies>
 			</plugin>
-			<!-- 
+
+<!-- 
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-gpg-plugin</artifactId>
@@ -101,6 +102,7 @@
 				</configuration>
 			</plugin>
  -->
+
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-jar-plugin</artifactId>
