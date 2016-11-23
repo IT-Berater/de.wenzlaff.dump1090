@@ -4,8 +4,6 @@
 [![Github Releases](https://img.shields.io/github/downloads/atom/atom/latest/total.svg)](https://github.com/IT-Berater/de.wenzlaff.dump1090)
 
 
-
-
 # de.wenzlaff.dump1090
 
 Java Wrapper für die Dump1090 Schnittstelle.
@@ -15,9 +13,12 @@ Dieses Projekt ist eine Javaschnittstelle für den Zugriff auf die Daten von Dum
 Folgende Klassen gibt es:
 
 Flugzeug
+
 Flugzeuge
+
 Luftnotfall
 
-![Langenhagen](http://blog.wenzlaff.de/wp-content/uploads/2016/11/flughafen-eddv.png)
+<img src="http://blog.wenzlaff.de/wp-content/uploads/2016/11/flughafen-eddv.png" alt="EDDV" height="937px" width="1446px" />
+
 
 Details siehe [http://blog.wenzlaff.de/]
