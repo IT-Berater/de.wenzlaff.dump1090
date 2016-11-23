@@ -18,6 +18,6 @@ Flugzeug
 Flugzeuge
 Luftnotfall
 
-![Langenhagen](http://blog.wenzlaff.de/wp-content/uploads/2016/11/flughafen-eddv.png)
+![Langenhagen](http://blog.wenzlaff.de/wp-content/uploads/2016/11/flughafen-eddv.png){:height="937px" width="1446px"}.
 
 Details siehe [http://blog.wenzlaff.de/]
