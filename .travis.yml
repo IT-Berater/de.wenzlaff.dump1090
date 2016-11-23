@@ -2,6 +2,10 @@ language: java
 
 sudo: false # faster builds
 
+os:
+  - linux
+  - osx
+
 jdk:
   - oraclejdk8
   
