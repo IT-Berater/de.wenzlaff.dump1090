@@ -94,14 +94,14 @@ public class PushoverAktion implements Aktion {
 				if (result.getStatus() != 1) { // Status eins ist OK, alles anderer Fehler siehe https://pushover.net/api
 					LOG.error(String.format("Fehler: Pushover Status: %d, Request ID: %s", result.getStatus(), result.getRequestId()));
 				} else {
-					LOG.info("Pushover Nachricht (Request Id: {} ) erfolgreich versendet um {}.", result.getRequestId(), new Date());
+					LOG.info("OK: Pushover Nachricht (Request Id: {} ) erfolgreich versendet um {}.", result.getRequestId(), new Date());
 				}
 			}
 		}
 	}
 
 	public void sendPushoverNachricht(String nachricht) {
-		LOG.info("Versende Pushover Aktion mit folgender Nachricht: {}", nachricht);
+		LOG.info("OK: Versende Pushover Aktion mit folgender Nachricht: {}", nachricht);
 
 		PushoverClient client = new PushoverRestClient();
 
