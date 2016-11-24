@@ -395,10 +395,26 @@ public class Flugzeug {
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
 		builder.append("Flugzeug [");
+
+		if (flight != null) {
+			builder.append("flight=");
+			builder.append(flight);
+			builder.append(", ");
+		}
 		if (hex != null) {
 			builder.append("hex=");
 			builder.append(hex);
 			builder.append(", ");
+		}
+		if (speed != null) {
+			builder.append("speed=");
+			builder.append(speed);
+			builder.append(" Knoten/h, ");
+		}
+		if (altitude != null) {
+			builder.append("altitude=");
+			builder.append(altitude);
+			builder.append(" Fuss, ");
 		}
 		if (squawk != null) {
 			builder.append("squawk=");
@@ -413,21 +429,6 @@ public class Flugzeug {
 		if (lon != null) {
 			builder.append("lon=");
 			builder.append(lon);
-			builder.append(", ");
-		}
-		if (altitude != null) {
-			builder.append("altitude=");
-			builder.append(altitude);
-			builder.append(" Fuss, ");
-		}
-		if (speed != null) {
-			builder.append("speed=");
-			builder.append(speed);
-			builder.append(" Knoten/h, ");
-		}
-		if (flight != null) {
-			builder.append("flight=");
-			builder.append(flight);
 			builder.append(", ");
 		}
 		if (nucp != null) {
@@ -492,6 +493,11 @@ public class Flugzeug {
 			builder.append(flight.trim());
 			builder.append(", ");
 		}
+		if (hex != null) {
+			builder.append("HEX: ");
+			builder.append(hex.toUpperCase());
+			builder.append(", ");
+		}
 		if (altitude != null) {
 			builder.append("Höhe: ");
 			builder.append(getMeterVonFuss(altitude));
@@ -501,11 +507,6 @@ public class Flugzeug {
 			builder.append("Geschwindigkeit: ");
 			builder.append(getKmVonKnoten(speed));
 			builder.append(" km/h, ");
-		}
-		if (hex != null) {
-			builder.append("HEX: ");
-			builder.append(hex.toUpperCase());
-			builder.append(", ");
 		}
 		if (squawk != null) {
 			builder.append("Squawk: ");
