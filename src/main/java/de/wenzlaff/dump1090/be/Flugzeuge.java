@@ -79,7 +79,7 @@ public class Flugzeuge {
 
 		for (Flugzeug flugzeug : aircraft) {
 			if (isImLandeanflug(flugzeug)) {
-				LOG.debug("OK: erfasst das {}", flugzeug);
+				LOG.debug("erfasst {}", flugzeug);
 				flugzeugeImLandeanflug.add(flugzeug);
 			}
 		}
