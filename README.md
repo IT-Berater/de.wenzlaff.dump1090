@@ -12,11 +12,21 @@ Dieses Projekt ist eine Javaschnittstelle für den Zugriff auf die Daten von Dum
 
 Folgende Klassen gibt es:
 
-Flugzeug
+* Flugzeug
+Stellte ein Flugzeug dar.
 
-Flugzeuge
+* Flugzeuge
+Container für mehrere Flugzeuge.
 
-Luftnotfall
+* Luftnotfall
+Alle möglichen Luftnotfälle.
+
+* PushoverSound
+Die möglichen Töne für Pushover
+
+* Converter
+Die Konverter von Milen nach Km usw.
+
 
 ![Langenhagen](/bilder/flughafen-eddv.png)
 
