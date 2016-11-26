@@ -22,10 +22,10 @@ Folgende Klassen gibt es:
  * Alle möglichen Luftnotfälle.
 
 * PushoverSound
- * Die möglichen Töne für Pushover
+ * Die möglichen Töne für Pushover.
 
 * Converter
- * Die Konverter von Milen nach Km usw.
+ * Die Konverter von Meilen nach Km usw.
 
 
 ![Langenhagen](/bilder/flughafen-eddv.png)
