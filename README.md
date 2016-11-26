@@ -26,6 +26,10 @@ Folgende Klassen gibt es:
 
 * Converter
  * Die Konverter von Meilen nach Km usw.
+ 
+ Hier das Klassendiagramm:
+ 
+ ![Klassendiagramm](/bilder/Klassendiagramm.png)
 
 
 ![Langenhagen](/bilder/flughafen-eddv.png)
