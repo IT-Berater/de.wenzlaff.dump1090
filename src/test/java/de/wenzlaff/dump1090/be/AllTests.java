@@ -11,7 +11,7 @@ import org.junit.runners.Suite.SuiteClasses;
  *
  */
 @RunWith(Suite.class)
-@SuiteClasses({ FlugzeugeEinlesenTest.class, FlugzeugeTest.class, FlugzeugTest.class })
+@SuiteClasses({ FlugzeugeEinlesenTest.class, FlugzeugeTest.class, FlugzeugTest.class, ConverterTest.class })
 public class AllTests {
 
 }

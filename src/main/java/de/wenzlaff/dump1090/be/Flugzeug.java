@@ -370,27 +370,6 @@ public class Flugzeug {
 		this.rssi = rssi;
 	}
 
-	/**
-	 * Umrechnung von Knoten nach Km/h.
-	 * 
-	 * @param knoten
-	 * @return BigDecimal mit Km/h
-	 */
-	public BigDecimal getKmVonKnoten(String meilen) {
-		return new BigDecimal(meilen.trim()).multiply(new BigDecimal(1.852)).setScale(0, BigDecimal.ROUND_UP);
-	}
-
-	/**
-	 * Umgrechnung von Fuss nach Meter.
-	 * 
-	 * @param String
-	 *            mit der Länge in Fuss
-	 * @return BigDecimal mit Meter
-	 */
-	public BigDecimal getMeterVonFuss(String fuss) {
-		return new BigDecimal(fuss.trim()).multiply(new BigDecimal(0.3048)).setScale(0, BigDecimal.ROUND_UP);
-	}
-
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
@@ -479,50 +458,41 @@ public class Flugzeug {
 		return builder.toString();
 	}
 
-	/**
-	 * Liefert das Format für die Nachrichten.
-	 * 
-	 * @return String mit dem Flugzeugformat.
-	 */
-	public String getFormat() {
-		StringBuilder builder = new StringBuilder();
-		builder.append("Flugzeug ");
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((flight == null) ? 0 : flight.hashCode());
+		result = prime * result + ((hex == null) ? 0 : hex.hashCode());
+		result = prime * result + ((squawk == null) ? 0 : squawk.hashCode());
+		return result;
+	}
 
-		if (flight != null) {
-			builder.append("Flug: ");
-			builder.append(flight.trim());
-			builder.append(", ");
-		}
-		if (hex != null) {
-			builder.append("HEX: ");
-			builder.append(hex.toUpperCase());
-			builder.append(", ");
-		}
-		if (altitude != null) {
-			builder.append("Höhe: ");
-			builder.append(getMeterVonFuss(altitude));
-			builder.append(" m, ");
-		}
-		if (speed != null) {
-			builder.append("Geschwindigkeit: ");
-			builder.append(getKmVonKnoten(speed));
-			builder.append(" km/h, ");
-		}
-		if (squawk != null) {
-			builder.append("Squawk: ");
-			builder.append(squawk);
-			builder.append(", ");
-		}
-		if (lat != null) {
-			builder.append("Lat: ");
-			builder.append(lat);
-			builder.append(", ");
-		}
-		if (lon != null) {
-			builder.append("Lon: ");
-			builder.append(lon);
-		}
-		return builder.toString();
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Flugzeug other = (Flugzeug) obj;
+		if (flight == null) {
+			if (other.flight != null)
+				return false;
+		} else if (!flight.equals(other.flight))
+			return false;
+		if (hex == null) {
+			if (other.hex != null)
+				return false;
+		} else if (!hex.equals(other.hex))
+			return false;
+		if (squawk == null) {
+			if (other.squawk != null)
+				return false;
+		} else if (!squawk.equals(other.squawk))
+			return false;
+		return true;
 	}
 
 }

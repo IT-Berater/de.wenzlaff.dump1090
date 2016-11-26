@@ -65,18 +65,11 @@ public class FlugzeugTest {
 	}
 
 	@Test
-	public void testFormat() {
-		Flugzeug f = new Flugzeug();
-		f.setAltitude("1000");
-		f.setHex("FFFF");
-		f.setSpeed("300");
-		f.setLat("52.454084");
-		f.setLon("9.709167");
-		f.setFlight("TUI53Y");
-		f.setSquawk("1000");
-
-		assertNotNull(f.getFormat());
-		System.out.println(f.getFormat());
+	public void testGleich() {
+		Flugzeug flugzeugKopie = new Flugzeug();
+		assertEquals(true, flugzeug.equals(flugzeugKopie));
+		flugzeugKopie.setFlight("NEU");
+		assertEquals(false, flugzeug.equals(flugzeugKopie));
 	}
 
 }

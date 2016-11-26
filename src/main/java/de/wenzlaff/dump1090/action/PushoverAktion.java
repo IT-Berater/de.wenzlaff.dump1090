@@ -6,6 +6,7 @@ import java.util.Properties;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import de.wenzlaff.dump1090.be.Converter;
 import de.wenzlaff.dump1090.be.Flugzeug;
 import de.wenzlaff.dump1090.be.Flugzeuge;
 import de.wenzlaff.dump1090.be.PushoverSound;
@@ -118,7 +119,7 @@ public class PushoverAktion implements Aktion {
 	}
 
 	public void sendPushoverNachricht() {
-		String nachricht = this.flugzeug.getFormat();
+		String nachricht = getNachrichtFormat(this.flugzeug);
 		LOG.info("Versende Pushover Aktion mit folgender Nachricht: {}", nachricht);
 
 		String nachrichtenUrl = pushoverNachrichtUrl + this.flugzeug.getHex();
@@ -136,6 +137,52 @@ public class PushoverAktion implements Aktion {
 				LOG.error("Fehler beim versenden der Pushover Nachricht: {} wegen: {} mit Result: {}", nachricht, e, result);
 			}
 		}
+	}
+
+	/**
+	 * Liefert das Format für die Nachrichten.
+	 * 
+	 * @return String mit dem Flugzeugformat.
+	 */
+	private String getNachrichtFormat(Flugzeug f) {
+		StringBuilder builder = new StringBuilder();
+		builder.append("Flugzeug ");
+
+		if (f.getFlight() != null) {
+			builder.append("Flug: ");
+			builder.append(f.getFlight().trim());
+			builder.append(", ");
+		}
+		if (f.getHex() != null) {
+			builder.append("HEX: ");
+			builder.append(f.getHex().toUpperCase());
+			builder.append(", ");
+		}
+		if (f.getAltitudeAsString() != null) {
+			builder.append("Höhe: ");
+			builder.append(Converter.getMeterVonFuss(f.getAltitudeAsString()));
+			builder.append(" m, ");
+		}
+		if (f.getSpeed() != null) {
+			builder.append("Geschwindigkeit: ");
+			builder.append(Converter.getKmVonKnoten(f.getSpeed()));
+			builder.append(" km/h, ");
+		}
+		if (f.getSquawk() != null) {
+			builder.append("Squawk: ");
+			builder.append(f.getSquawk());
+			builder.append(", ");
+		}
+		if (f.getLat() != null) {
+			builder.append("Lat: ");
+			builder.append(f.getLat());
+			builder.append(", ");
+		}
+		if (f.getLon() != null) {
+			builder.append("Lon: ");
+			builder.append(f.getLon());
+		}
+		return builder.toString();
 	}
 
 }
