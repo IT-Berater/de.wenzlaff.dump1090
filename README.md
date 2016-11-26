@@ -46,7 +46,7 @@ Folgende fachlichen Klassen gibt es, die auch für eigene Zwecke verwendet werde
  * Die Konverter von Meilen nach Km usw.
  
 # Vorbedingung
- Es muss ein ![Dump1090 mutability](https://github.com/mutability/dump1090) Server laufen und die aircraf.json Datei (http://IP-ADRESSE/dump1090/data/aircraft.json) muss bei eingabe im Browser angezeigt werden.
+ Es muss ein ![Dump1090 mutability](https://github.com/mutability/dump1090) Server laufen und die aircraf.json Datei (http://IP-ADRESSE/dump1090/data/aircraft.json) muss bei eingabe im Browser angezeigt werden. Es muss auch Java mind. 1.8 installiert sein.
  
 # Installation
  Ein Maven Java-Projekt anlegen und in der pom.xml die Schnittstelle einbinden:
@@ -93,10 +93,19 @@ Dann fehlt nur noch eine de.wenzlaff.dump1090.properties Datei im Classpath mit 
 
 	# der Testmodus, bei true werden alles lokalen Tests ausgeführt, bei false nicht
 	lokaler_testmodus = true
- 
- Hier das Klassendiagramm:
+	
+# Start
+
+Start über die Javaklasse oder auch über die Kommandozeile:
+
+	java -jar de.wenzlaff.dump1090-0.0.5.jar 10.0.9.32 5
+	
+
+# Klassendiagramm
  
  ![Klassendiagramm](/bilder/Klassendiagramm.png)
+
+# Aufbau
 
 
 ![Langenhagen](/bilder/flughafen-eddv.png)
