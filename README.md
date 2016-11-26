@@ -15,11 +15,17 @@ Mit dieser Javaschnittstelle können einfach Pushover Nachrichten an jedes Handy
 
 Auch soll eine Pushover versendet werden wenn ein Luftnotfall (med. Notfall, Entfürhrung usw. ) per Transponder gemeldet wird.
 
-Es gibt einige Internet Seiten die auch solche Nachrichten versenden. Aber nicht so speziel.
+Hier mal eine beispiel Pushover Nachricht:
+
+![](/bilder/pushover-nachricht.png)
+
+Es gibt einige Internet Seiten die auch solche Nachrichten versenden. Aber nicht so speziell.
 
 Es soll aber die eigenen Daten die mit einem lokal laufenden Dump1090 Server empfangen werden ausgewertet werden.
 
 Dazu wird die Funktionalität des ![Dump1090 mutability](https://github.com/mutability/dump1090) verwendet. Dieser erzeugt im regelmäßigen abständen eine JSon Datei (http://IP-ADRESSE/dump1090/data/aircraft.json) die durch diese Java Schnittstelle ausgewertet wird.
+
+Diese Java-Programm kann dann auf einem Raspberry Pi laufen. Auf einen Mac unter macOS läuft es aber auch. Windows ist noch nicht getestet, sollt aber auch so laufen.
 
 
 Folgende fachlichen Klassen gibt es, die auch für eigene Zwecke verwendet werden können:
@@ -63,9 +69,7 @@ Dann fehlt nur noch eine de.wenzlaff.dump1090.properties Datei im Classpath mit 
 
 
 	# Einstellungs Datei für de.wenzlaff.dump1090
-
 	# Thomas Wenzlaff www.wenzlaff.de
-
 
 	# die Pushover User ID Token
 	pushover_user_id_token = Pushover Token
