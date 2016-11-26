@@ -45,15 +45,16 @@ Folgende fachlichen Klassen gibt es, die auch für eigene Zwecke verwendet werde
  
  # Installation
  Ein Maven Java-Projekt anlegen und in der pom.xml die Schnittstelle einbinden:
- '<
-  <dependencies>
-  	<dependency>
-  		<groupId>de.wenzlaff.dump1090</groupId>
-  		<artifactId>de.wenzlaff.dump1090</artifactId>
-  		<version>0.0.6-SNAPSHOT</version>
-  	</dependency>
-  </dependencies>
- >'
+
+	# 
+	# <dependencies>
+	#   <dependency>
+	# 		<groupId>de.wenzlaff.dump1090</groupId>
+	# 		<artifactId>de.wenzlaff.dump1090</artifactId>
+	# 		<version>0.0.6-SNAPSHOT</version>
+	# 	</dependency>
+	#  </dependencies>
+	# 
  
  Dann in einer Java Klasse den Aufruf:
  		
@@ -63,34 +64,34 @@ Folgende fachlichen Klassen gibt es, die auch für eigene Zwecke verwendet werde
 		
 Dann fehlt nur noch eine de.wenzlaff.dump1090.properties Datei im Classpath mit dem Inhalt:
 
-#
-#Einstellungs Datei für de.wenzlaff.dump1090
 
-#Thomas Wenzlaff www.wenzlaff.de
+	# Einstellungs Datei für de.wenzlaff.dump1090
+
+	# Thomas Wenzlaff www.wenzlaff.de
 
 
-#die Pushover User ID Token
-pushover_user_id_token = Pushover Token
-#die Pushover App Api Token
-pushover_my_app_api_token = Pushover Api Token
+	# die Pushover User ID Token
+	pushover_user_id_token = Pushover Token
+	# die Pushover App Api Token
+	pushover_my_app_api_token = Pushover Api Token
 
-#die Nachricht URL für den Link in der Message, wird um die HEX erweitert
-pushover_nachricht_url = http://fr24.com/
+	# die Nachricht URL für den Link in der Message, wird um die HEX erweitert
+	pushover_nachricht_url = http://fr24.com/
 
-#an welche Geräte soll die Pushover Nachrichten gesendet werden, alle ist "device", oder aber getrennt durch ; (Semikolon) z.B iPhone1;iPhone2
-pushover_device = iPhone
+	# an welche Geräte soll die Pushover Nachrichten gesendet werden, alle ist "device", oder aber getrennt durch ; (Semikolon) z.B iPhone1;iPhone2
+	pushover_device = iPhone
 
-#der Längengrad von dem die Aktivierung los geht, z.B. Langenhagen in der Tempelhofer Str.: 9.742556, Breitengrad 52.438453 mit Höhe 51 m
-pushover_laengengrad_min = 9.742556
+	# der Längengrad von dem die Aktivierung los geht, z.B. Langenhagen in der Tempelhofer Str.: 9.742556, Breitengrad 52.438453 mit Höhe 51 m
+	pushover_laengengrad_min = 9.742556
 
-#die maximale Höhe in Fuss (bei Meter mal * 0.3048 z.B. 2000 Fuss * 0.3 = 609 Meter, 3000 Fuss = 914 m
-pushover_max_hoehe = 3000
+	# die maximale Höhe in Fuss (bei Meter mal * 0.3048 z.B. 2000 Fuss * 0.3 = 609 Meter, 3000 Fuss = 914 m
+	pushover_max_hoehe = 3000
 
-#die Server Adresse 
-dump1090_server_ip = 10.0.9.32
+	# die Server Adresse 
+	dump1090_server_ip = 10.0.9.32
 
-#der Testmodus, bei true werden alles lokalen Tests ausgeführt, bei false nicht
-lokaler_testmodus = true
+	# der Testmodus, bei true werden alles lokalen Tests ausgeführt, bei false nicht
+	lokaler_testmodus = true
 
 
  
