@@ -27,6 +27,8 @@ import net.pushover.client.Status;
  */
 public class PushoverAktion implements Aktion {
 
+	private static final String NACHRICHTEN_TITEL = "de.wenzlaff.dump1090";
+
 	private static final Logger LOG = LoggerFactory.getLogger(PushoverAktion.class);
 
 	private String pushoverUserToken;
@@ -110,7 +112,7 @@ public class PushoverAktion implements Aktion {
 			Status result = null;
 			try {
 				result = client.pushMessage(PushoverMessage.builderWithApiToken(pushoverMyApiToken).setUserId(pushoverUserToken).setMessage(nachricht).setDevice(pushoverDevices[i])
-						.setPriority(MessagePriority.HIGH).setTitle("Nachricht von de.wenzlaff.dump1090").setUrl("http://www.wenzlaff.info").setTitleForURL("www.wenzlaff.info")
+						.setPriority(MessagePriority.HIGH).setTitle(NACHRICHTEN_TITEL).setUrl("http://www.wenzlaff.info").setTitleForURL("www.wenzlaff.info")
 						.setSound(PushoverSound.magic.name()).build()); // sounds siehe https://pushover.net/api#sounds
 			} catch (PushoverException e) {
 				LOG.error("Fehler beim versenden der Pushover Nachricht: {} wegen: {} mit Result: {}", nachricht, e, result);
@@ -131,7 +133,7 @@ public class PushoverAktion implements Aktion {
 			Status result = null;
 			try {
 				result = client.pushMessage(PushoverMessage.builderWithApiToken(pushoverMyApiToken).setUserId(pushoverUserToken).setMessage(nachricht).setDevice(pushoverDevices[i])
-						.setPriority(MessagePriority.HIGH).setTitle("Nachricht von de.wenzlaff.dump1090").setUrl(nachrichtenUrl).setTitleForURL(pushoverNachrichtUrl)
+						.setPriority(MessagePriority.HIGH).setTitle(NACHRICHTEN_TITEL).setUrl(nachrichtenUrl).setTitleForURL(pushoverNachrichtUrl)
 						.setSound(PushoverSound.magic.name()).build()); // sounds siehe https://pushover.net/api#sounds
 			} catch (PushoverException e) {
 				LOG.error("Fehler beim versenden der Pushover Nachricht: {} wegen: {} mit Result: {}", nachricht, e, result);
