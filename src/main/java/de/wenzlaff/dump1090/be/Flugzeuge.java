@@ -69,30 +69,35 @@ public class Flugzeuge {
 	}
 
 	/**
-	 * Liefert alle Flugzeuge im Landeanflug.
+	 * Liefert alle Flugzeuge im Landeanflug und Start.
 	 * 
 	 * @return
 	 */
-	public List<Flugzeug> getFlugzeugeImLandeanflug() {
+	public List<Flugzeug> getFlugzeugeImAnAbflug() {
 
-		List<Flugzeug> flugzeugeImLandeanflug = new ArrayList<Flugzeug>();
+		List<Flugzeug> flugzeuge = new ArrayList<Flugzeug>();
 
 		for (Flugzeug flugzeug : aircraft) {
-			if (isImLandeanflug(flugzeug)) {
+			if (isImStartUndLandeanflug(flugzeug)) {
 				LOG.debug("erfasst {}", flugzeug);
-				flugzeugeImLandeanflug.add(flugzeug);
+				flugzeuge.add(flugzeug);
 			}
 		}
-		return flugzeugeImLandeanflug;
+		return flugzeuge;
 	}
 
 	/**
-	 * Liefert true, wenn ein Flugzeug im Landeanflug ist, sonst false.
+	 * Liefert true, wenn ein Flugzeug im Landeanflug oder Start ist, sonst false.
+	 * 
+	 * Es wird überprüft ob das Flugzeug unter der maximalen Höhe ist. Ob das Flugzeug in der Luft ist. Am Boden wird nicht berücksichtigt.
+	 * 
+	 * Und ob das Flugzeug aus dem Osten kommt oder startet in richtung Osten.
 	 * 
 	 * @param flugzeug
-	 * @return
+	 *            das überprüft wird.
+	 * @return true wenn Start oder Landung aus bzw. nach Osten.
 	 */
-	private boolean isImLandeanflug(Flugzeug flugzeug) {
+	private boolean isImStartUndLandeanflug(Flugzeug flugzeug) {
 		boolean status = false;
 
 		if (flugzeug.getAltitude() != null) {

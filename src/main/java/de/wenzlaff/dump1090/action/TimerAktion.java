@@ -73,7 +73,7 @@ public class TimerAktion extends TimerTask implements Aktion {
 			}
 
 			// Nachricht wenn Flugzeug in Hannover landet
-			List<Flugzeug> alleImLandeAnflug = flugzeuge.getFlugzeugeImLandeanflug();
+			List<Flugzeug> alleImLandeAnflug = flugzeuge.getFlugzeugeImAnAbflug();
 			if (alleImLandeAnflug.size() > 0) {
 				// Flugzeuge merken
 				for (int i = 0; i < alleImLandeAnflug.size(); i++) {
