@@ -22,7 +22,6 @@ Es soll aber die eigenen Daten die mit einem lokal laufenden Dump1090 Server emp
 Dazu wird die Funktionalität des ![Dump1090 mutability](https://github.com/mutability/dump1090) verwendet. Dieser erzeugt im regelmäßigen abständen eine JSon Datei (http://IP-ADRESSE/dump1090/data/aircraft.json) die durch diese Java Schnittstelle ausgewertet wird.
 
 
-
 Folgende fachlichen Klassen gibt es, die auch für eigene Zwecke verwendet werden können:
 
 * Flugzeug
@@ -40,13 +39,12 @@ Folgende fachlichen Klassen gibt es, die auch für eigene Zwecke verwendet werde
 * Converter
  * Die Konverter von Meilen nach Km usw.
  
- # Vorbedingung
+# Vorbedingung
  Es muss ein ![Dump1090 mutability](https://github.com/mutability/dump1090) Server laufen und die aircraf.json Datei (http://IP-ADRESSE/dump1090/data/aircraft.json) muss bei eingabe im Browser angezeigt werden.
  
- # Installation
+# Installation
  Ein Maven Java-Projekt anlegen und in der pom.xml die Schnittstelle einbinden:
 
-	# 
 	# <dependencies>
 	#   <dependency>
 	# 		<groupId>de.wenzlaff.dump1090</groupId>
@@ -54,13 +52,12 @@ Folgende fachlichen Klassen gibt es, die auch für eigene Zwecke verwendet werde
 	# 		<version>0.0.6-SNAPSHOT</version>
 	# 	</dependency>
 	#  </dependencies>
-	# 
- 
+
  Dann in einer Java Klasse den Aufruf:
  		
- 	    // IP-Adresse anpassen
-		StartFlugabfrage task = new StartFlugabfrage("10.0.9.32", "1");
-		task.startEndlosNotfallabfrage();
+	// IP-Adresse anpassen
+	StartFlugabfrage task = new StartFlugabfrage("10.0.9.32", "1");
+	task.startEndlosNotfallabfrage();
 		
 Dann fehlt nur noch eine de.wenzlaff.dump1090.properties Datei im Classpath mit dem Inhalt:
 
@@ -92,8 +89,6 @@ Dann fehlt nur noch eine de.wenzlaff.dump1090.properties Datei im Classpath mit 
 
 	# der Testmodus, bei true werden alles lokalen Tests ausgeführt, bei false nicht
 	lokaler_testmodus = true
-
-
  
  Hier das Klassendiagramm:
  
