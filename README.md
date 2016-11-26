@@ -13,7 +13,7 @@ Dieses Projekt ist eine Javaschnittstelle für den Zugriff auf die Daten von Dum
 
 Mit dieser Javaschnittstelle können einfach Pushover Nachrichten an jedes Handy bzw. Tablet versendet werden wenn ein Flugzeug startet oder landet. Da wir in der nähe vom Flughafen Hannover (EDDV, HAJ) leben, sehen wir gerne Flugzeuge starten und landen. Die beiden Start.- und Landebahnen liegen in Ost-West Richtung. Wenn wir aus dem Küchenfenster schauen oder wenn wir auf der Terrasse sitzen, sehen wir alle Flugzeuge die von Osten aus ankommen bzw. in die Richtung wegfliegen. Nun möchte ich gerne eine Nachricht mit Höhe, Geschwindigkeit, Flugnummer usw. auf mein Handy erhalten, wenn ein Flugzeug aus dem Osten zum landen ankommt bzw. in Richtung Osten starte. Alle anderen Flugzeuge die in die andere Richtung starten bzw. landen sollen nicht berücksichtigt werden. Auch nicht Flugzeuge die nur Hannover überfliegen.
 
-Auch soll eine Pushover versendet werden wenn ein Luftnotfall (med. Notfall, Entfürhrung usw. ) per Transponder gemeldet wird.
+Auch soll eine Pushover versendet werden wenn ein Luftnotfall (med. Notfall, Entführung usw. ) per Transponder gemeldet wird.
 
 Hier mal eine beispiel Pushover Nachricht:
 
