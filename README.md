@@ -45,13 +45,13 @@ Folgende fachlichen Klassen gibt es, die auch für eigene Zwecke verwendet werde
 # Installation
  Ein Maven Java-Projekt anlegen und in der pom.xml die Schnittstelle einbinden:
 
-	# <dependencies>
-	#   <dependency>
-	# 		<groupId>de.wenzlaff.dump1090</groupId>
-	# 		<artifactId>de.wenzlaff.dump1090</artifactId>
-	# 		<version>0.0.6-SNAPSHOT</version>
-	# 	</dependency>
-	#  </dependencies>
+	<dependencies>
+	   <dependency>
+	 		<groupId>de.wenzlaff.dump1090</groupId>
+	 		<artifactId>de.wenzlaff.dump1090</artifactId>
+	 		<version>0.0.5</version>
+	 	</dependency>
+	  </dependencies>
 
  Dann in einer Java Klasse den Aufruf:
  		
