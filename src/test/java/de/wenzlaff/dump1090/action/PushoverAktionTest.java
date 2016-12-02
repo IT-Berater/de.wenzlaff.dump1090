@@ -33,6 +33,16 @@ public class PushoverAktionTest {
 		this.pushoverAktion.run();
 	}
 
+	@Test
+	public void testSendNachricht() throws Exception {
+		this.pushoverAktion.sendPushoverNachricht();
+	}
+
+	@Test
+	public void testSendNachrichtText() throws Exception {
+		this.pushoverAktion.sendPushoverNachricht("JUnit Testnachricht");
+	}
+
 	/**
 	 * Ein Testflugzeut das im Notfall ist.
 	 * 

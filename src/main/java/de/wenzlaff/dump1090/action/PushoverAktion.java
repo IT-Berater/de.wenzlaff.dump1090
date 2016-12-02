@@ -121,22 +121,24 @@ public class PushoverAktion implements Aktion {
 	}
 
 	public void sendPushoverNachricht() {
-		String nachricht = getNachrichtFormat(this.flugzeug);
-		LOG.info("Versende Pushover Aktion mit folgender Nachricht: {}", nachricht);
+		if (this.flugzeug != null) {
+			String nachricht = getNachrichtFormat(this.flugzeug);
+			LOG.info("Versende Pushover Aktion mit folgender Nachricht: {}", nachricht);
 
-		String nachrichtenUrl = pushoverNachrichtUrl + this.flugzeug.getHex();
-		LOG.info("Nachrichten URL: {}", nachrichtenUrl);
+			String nachrichtenUrl = pushoverNachrichtUrl + this.flugzeug.getHex();
+			LOG.info("Nachrichten URL: {}", nachrichtenUrl);
 
-		PushoverClient client = new PushoverRestClient();
+			PushoverClient client = new PushoverRestClient();
 
-		for (int i = 0; i < pushoverDevices.length; i++) {
-			Status result = null;
-			try {
-				result = client.pushMessage(PushoverMessage.builderWithApiToken(pushoverMyApiToken).setUserId(pushoverUserToken).setMessage(nachricht).setDevice(pushoverDevices[i])
-						.setPriority(MessagePriority.HIGH).setTitle(NACHRICHTEN_TITEL).setUrl(nachrichtenUrl).setTitleForURL(pushoverNachrichtUrl)
-						.setSound(PushoverSound.magic.name()).build()); // sounds siehe https://pushover.net/api#sounds
-			} catch (PushoverException e) {
-				LOG.error("Fehler beim versenden der Pushover Nachricht: {} wegen: {} mit Result: {}", nachricht, e, result);
+			for (int i = 0; i < pushoverDevices.length; i++) {
+				Status result = null;
+				try {
+					result = client.pushMessage(PushoverMessage.builderWithApiToken(pushoverMyApiToken).setUserId(pushoverUserToken).setMessage(nachricht)
+							.setDevice(pushoverDevices[i]).setPriority(MessagePriority.HIGH).setTitle(NACHRICHTEN_TITEL).setUrl(nachrichtenUrl).setTitleForURL(pushoverNachrichtUrl)
+							.setSound(PushoverSound.magic.name()).build()); // sounds siehe https://pushover.net/api#sounds
+				} catch (PushoverException e) {
+					LOG.error("Fehler beim versenden der Pushover Nachricht: {} wegen: {} mit Result: {}", nachricht, e, result);
+				}
 			}
 		}
 	}
@@ -146,43 +148,45 @@ public class PushoverAktion implements Aktion {
 	 * 
 	 * @return String mit dem Flugzeugformat.
 	 */
-	private String getNachrichtFormat(Flugzeug f) {
+	private String getNachrichtFormat(Flugzeug flugzeug) {
 		StringBuilder builder = new StringBuilder();
 		builder.append("Flugzeug ");
 
-		if (f.getFlight() != null) {
-			builder.append("Flug: ");
-			builder.append(f.getFlight().trim());
-			builder.append(", ");
-		}
-		if (f.getHex() != null) {
-			builder.append("HEX: ");
-			builder.append(f.getHex().toUpperCase());
-			builder.append(", ");
-		}
-		if (f.getAltitudeAsString() != null) {
-			builder.append("Höhe: ");
-			builder.append(Converter.getMeterVonFuss(f.getAltitudeAsString()));
-			builder.append(" m, ");
-		}
-		if (f.getSpeed() != null) {
-			builder.append("Geschwindigkeit: ");
-			builder.append(Converter.getKmVonKnoten(f.getSpeed()));
-			builder.append(" km/h, ");
-		}
-		if (f.getSquawk() != null) {
-			builder.append("Squawk: ");
-			builder.append(f.getSquawk());
-			builder.append(", ");
-		}
-		if (f.getLat() != null) {
-			builder.append("Lat: ");
-			builder.append(f.getLat());
-			builder.append(", ");
-		}
-		if (f.getLon() != null) {
-			builder.append("Lon: ");
-			builder.append(f.getLon());
+		if (flugzeug != null) {
+			if (flugzeug.getFlight() != null) {
+				builder.append("Flug: ");
+				builder.append(flugzeug.getFlight().trim());
+				builder.append(", ");
+			}
+			if (flugzeug.getHex() != null) {
+				builder.append("HEX: ");
+				builder.append(flugzeug.getHex().toUpperCase());
+				builder.append(", ");
+			}
+			if (flugzeug.getAltitudeAsString() != null) {
+				builder.append("Höhe: ");
+				builder.append(Converter.getMeterVonFuss(flugzeug.getAltitudeAsString()));
+				builder.append(" m, ");
+			}
+			if (flugzeug.getSpeed() != null) {
+				builder.append("Geschwindigkeit: ");
+				builder.append(Converter.getKmVonKnoten(flugzeug.getSpeed()));
+				builder.append(" km/h, ");
+			}
+			if (flugzeug.getSquawk() != null) {
+				builder.append("Squawk: ");
+				builder.append(flugzeug.getSquawk());
+				builder.append(", ");
+			}
+			if (flugzeug.getLat() != null) {
+				builder.append("Lat: ");
+				builder.append(flugzeug.getLat());
+				builder.append(", ");
+			}
+			if (flugzeug.getLon() != null) {
+				builder.append("Lon: ");
+				builder.append(flugzeug.getLon());
+			}
 		}
 		return builder.toString();
 	}
