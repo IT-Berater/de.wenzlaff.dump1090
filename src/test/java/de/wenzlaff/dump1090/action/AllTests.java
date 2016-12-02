@@ -11,7 +11,7 @@ import org.junit.runners.Suite.SuiteClasses;
  *
  */
 @RunWith(Suite.class)
-@SuiteClasses({ PushoverAktionTest.class, VersionTest.class })
+@SuiteClasses({ PushoverAktionTest.class, VersionTest.class, TimerAktionTest.class, LogAktionTest.class })
 public class AllTests {
 
 }

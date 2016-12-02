@@ -18,7 +18,6 @@ public class TimerAktionTest {
 	@Test
 	public void testTimerAktion() {
 		new TimerAktion("10.0.9.23");
-
 	}
 
 }
