@@ -17,14 +17,23 @@ public class LogAktion implements Aktion {
 
 	private Flugzeuge flugzeuge;
 
+	/**
+	 * Der Konstruktor mit Flugzeug.
+	 * 
+	 * @param flugzeuge
+	 */
 	public LogAktion(Flugzeuge flugzeuge) {
 		this.flugzeuge = flugzeuge;
 	}
 
 	@Override
 	public void run() {
-		LOG.info("Anzahl Flugzeuge im Notfall: {}", this.flugzeuge.getNotfall().size());
-		LOG.info("Flugzeuge im Notfall: {}\n", this.flugzeuge.getNotfall());
+		if (this.flugzeuge != null && this.flugzeuge.getNotfall() != null) {
+			LOG.info("Anzahl Flugzeuge im Notfall: {}", this.flugzeuge.getNotfall().size());
+			LOG.info("Flugzeuge im Notfall: {}\n", this.flugzeuge.getNotfall());
+		} else {
+			LOG.info("Kein Flugzeug vorhanden");
+		}
 	}
 
 	public void error(Exception e) {
