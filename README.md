@@ -23,7 +23,7 @@ Es gibt einige Internet Seiten die auch solche Nachrichten versenden. Aber nicht
 
 Es soll aber die eigenen Daten die mit einem lokal laufenden Dump1090 Server empfangen werden ausgewertet werden.
 
-Dazu wird die Funktionalität des ![Dump1090 mutability](https://github.com/mutability/dump1090) verwendet. Dieser erzeugt im regelmäßigen abständen eine JSon Datei (http://IP-ADRESSE/dump1090/data/aircraft.json) die durch diese Java Schnittstelle ausgewertet wird.
+Dazu wird die Funktionalität des ![Dump1090 mutability](https://github.com/mutability/dump1090) verwendet. Dieser erzeugt im regelmäßigen Abständen eine JSon Datei (http://IP-ADRESSE/dump1090/data/aircraft.json) die durch diese Java Schnittstelle ausgewertet wird.
 
 Diese Java-Programm kann dann auf einem Raspberry Pi laufen. Auf einen Mac unter macOS läuft es aber auch. Windows ist noch nicht getestet, sollt aber auch so laufen.
 
