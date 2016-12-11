@@ -8,7 +8,14 @@ import java.math.BigDecimal;
  * @author Thomas Wenzlaff
  *
  */
-public class Converter {
+public final class Converter {
+
+	/**
+	 * Konstruktor.
+	 */
+	private Converter() {
+		// keine Instanzen
+	}
 
 	/**
 	 * Umrechnung von Knoten nach Km/h.
