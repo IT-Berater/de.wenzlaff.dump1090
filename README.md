@@ -40,7 +40,7 @@ Folgende fachlichen Klassen gibt es, die auch für eigene Zwecke verwendet werde
  * Alle möglichen Luftnotfälle.
 
 * PushoverSound
- * Die möglichen Töne für Pushover.
+ * Die möglichen Töne für die Pushover Nachrichten..
 
 * Converter
  * Die Konverter von Meilen nach Km usw.
@@ -83,6 +83,7 @@ Dann fehlt nur noch eine de.wenzlaff.dump1090.properties Datei im Classpath mit 
 	pushover_device = iPhone
 
 	# der Längengrad von dem die Aktivierung los geht, z.B. Langenhagen in der Tempelhofer Str.: 9.742556, Breitengrad 52.438453 mit Höhe 51 m
+	# siehe dazu auch das Diagramm weiter unten
 	pushover_laengengrad_min = 9.742556
 
 	# die maximale Höhe in Fuss (bei Meter mal * 0.3048 z.B. 2000 Fuss * 0.3 = 609 Meter, 3000 Fuss = 914 m
@@ -106,6 +107,9 @@ Start über die Javaklasse oder auch über die Kommandozeile:
  ![Klassendiagramm](/bilder/Klassendiagramm.png)
 
 # Aufbau
+
+Es muss der Längengrad ermittelt werden, ab dem die Warnungen erscheinen sollen. Dazu mal dieses Foto von Langenhagen. Der Längengrad muss
+dann in der de.wenzlaff.dump1090.properties Datei unter pushover_laengengrad_min eingetragen werden. Es werden also alle Flugzeuge östliche (rechts) von dem Längengrad ermittelt.
 
 
 ![Langenhagen](/bilder/flughafen-eddv.png)
