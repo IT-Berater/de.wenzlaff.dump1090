@@ -11,7 +11,7 @@ Java Wrapper für die Dump1090 Schnittstelle.
 Dieses Projekt ist eine Javaschnittstelle für den Zugriff auf die Daten von Dump1090 per Java Objekte.
 
 
-Mit dieser Javaschnittstelle können einfach Pushover Nachrichten an jedes Handy bzw. Tablet versendet werden wenn ein Flugzeug startet oder landet. Da wir in der nähe vom Flughafen Hannover (EDDV, HAJ) leben, sehen wir gerne Flugzeuge starten und landen. Die beiden Start.- und Landebahnen liegen in Ost-West Richtung. Wenn wir aus dem Küchenfenster schauen oder wenn wir auf der Terrasse sitzen, sehen wir alle Flugzeuge die von Osten aus ankommen bzw. in die Richtung wegfliegen. Nun möchte ich gerne eine Nachricht mit Höhe, Geschwindigkeit, Flugnummer usw. auf mein Handy erhalten, wenn ein Flugzeug aus dem Osten zum landen ankommt bzw. in Richtung Osten starte. Alle anderen Flugzeuge die in die andere Richtung starten bzw. landen sollen nicht berücksichtigt werden. Auch nicht Flugzeuge die nur Hannover überfliegen.
+Mit dieser Javaschnittstelle können einfach Pushover Nachrichten an jedes Handy bzw. Tablet versendet werden wenn ein Flugzeug startet oder landet. Da wir in der Nähe vom Flughafen Hannover (EDDV, HAJ) leben, sehen wir gerne Flugzeuge starten und landen. Die beiden Start.- und Landebahnen liegen in Ost-West Richtung. Wenn wir aus dem Küchenfenster schauen oder wenn wir auf der Terrasse sitzen, sehen wir alle Flugzeuge die von Osten aus ankommen bzw. in die Richtung wegfliegen. Nun möchte ich gerne eine Nachricht mit Höhe, Geschwindigkeit, Flugnummer usw. auf mein Handy erhalten, wenn ein Flugzeug aus dem Osten zum landen ankommt bzw. in Richtung Osten starte. Alle anderen Flugzeuge die in die andere Richtung starten bzw. landen sollen nicht berücksichtigt werden. Auch nicht Flugzeuge die nur Hannover überfliegen.
 
 Auch soll eine Pushover versendet werden wenn ein Luftnotfall (med. Notfall, Entführung usw. ) per Transponder gemeldet wird.
 
@@ -113,6 +113,12 @@ dann in der de.wenzlaff.dump1090.properties Datei unter pushover_laengengrad_min
 
 
 ![Langenhagen](/bilder/flughafen-eddv.png)
+
+# Funktion
+
+Es wird im Interval die vom Dump1090-Server geschriebenen JSon Datei (aircraft.json) eingelesen und in der Java Flugzeug Klasse bereitgestellt. Es wird also zur Entkopplelung nicht der Stream des Dump1090 Servers gelesen. Die empfagenen Flugzeugdaten werden ausgewertet. Wenn das Flugzeug den Längengrad überschreitet und die Eingestellte Höhe hat, wird eine Pushover Nacchricht versendet. Ebenso wenn ein Notfall Transpondersignal empfangen wird.
+
+
 
 
 Details siehe [http://blog.wenzlaff.de/]
