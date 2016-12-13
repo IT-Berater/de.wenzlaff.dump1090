@@ -55,7 +55,7 @@ Folgende fachlichen Klassen gibt es, die auch für eigene Zwecke verwendet werde
 	   <dependency>
 	 		<groupId>de.wenzlaff.dump1090</groupId>
 	 		<artifactId>de.wenzlaff.dump1090</artifactId>
-	 		<version>0.0.5</version>
+	 		<version>0.0.6</version> 
 	 	</dependency>
 	  </dependencies>
 
@@ -116,7 +116,7 @@ dann in der de.wenzlaff.dump1090.properties Datei unter pushover_laengengrad_min
 
 # Funktion
 
-Es wird im Interval die vom Dump1090-Server geschriebenen JSon Datei (aircraft.json) eingelesen und in der Java Flugzeug Klasse bereitgestellt. Es wird also zur Entkopplelung nicht der Stream des Dump1090 Servers gelesen. Die empfagenen Flugzeugdaten werden ausgewertet. Wenn das Flugzeug den Längengrad überschreitet und die Eingestellte Höhe hat, wird eine Pushover Nacchricht versendet. Ebenso wenn ein Notfall Transpondersignal empfangen wird.
+Es wird im Interval die vom Dump1090-Server geschriebenen JSon Datei (aircraft.json) eingelesen und in der Java Flugzeug Klasse bereitgestellt. Es wird also zur Entkopplung nicht der Stream des Dump1090 Servers gelesen. Die empfagenen Flugzeugdaten werden ausgewertet. Wenn das Flugzeug den Längengrad überschreitet und die Eingestellte Höhe hat, wird eine Pushover Nacchricht versendet. Ebenso wenn ein Notfall Transpondersignal empfangen wird.
 
 
 
