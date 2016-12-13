@@ -20,7 +20,8 @@ public final class Converter {
 	/**
 	 * Umrechnung von Knoten nach Km/h.
 	 * 
-	 * @param knoten
+	 * @param meilen
+	 *            mit der Geschwindigkeit in Meilen
 	 * @return BigDecimal mit Km/h
 	 */
 	public static BigDecimal getKmVonKnoten(String meilen) {
@@ -30,7 +31,7 @@ public final class Converter {
 	/**
 	 * Umgrechnung von Fuss nach Meter.
 	 * 
-	 * @param String
+	 * @param fuss
 	 *            mit der Länge in Fuss
 	 * @return BigDecimal mit Meter
 	 */

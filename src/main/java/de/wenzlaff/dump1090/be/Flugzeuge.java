@@ -71,7 +71,7 @@ public class Flugzeuge {
 	/**
 	 * Liefert alle Flugzeuge im Landeanflug und Start.
 	 * 
-	 * @return
+	 * @return List<Flugzeug> die Flugzeuge die im An bzw. Abflug sind.
 	 */
 	public List<Flugzeug> getFlugzeugeImAnAbflug() {
 

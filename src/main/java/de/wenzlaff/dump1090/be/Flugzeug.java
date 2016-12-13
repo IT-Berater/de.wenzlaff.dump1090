@@ -122,7 +122,7 @@ public class Flugzeug {
 	/**
 	 * Get Breitengrade. Lat. N-S
 	 * 
-	 * @return
+	 * @return String mit dem Breitengrad.
 	 */
 	public String getLat() {
 		return lat;
@@ -140,7 +140,7 @@ public class Flugzeug {
 	/**
 	 * Längengrade. Lon. z.B. 9,74281454
 	 * 
-	 * @return
+	 * @return String mit dem Längengrad.
 	 */
 	public String getLon() {
 		return lon;
@@ -149,7 +149,7 @@ public class Flugzeug {
 	/**
 	 * Längengrade. Lon. z.B. 9,74281454
 	 * 
-	 * @return
+	 * @return BigDecimal mit dem Längengrad oder 0
 	 */
 	public BigDecimal getLongitude() {
 		if (this.lon != null) {
@@ -171,7 +171,7 @@ public class Flugzeug {
 	/**
 	 * Höhe. Kann null sein wenn keine Höhe angegeben.
 	 * 
-	 * @return
+	 * @return String mit der Höhe
 	 */
 	public String getAltitudeAsString() {
 		return altitude;
@@ -180,7 +180,7 @@ public class Flugzeug {
 	/**
 	 * Höhe in Fuss. Kann null sein wenn keine Höhe angegeben.
 	 * 
-	 * @return
+	 * @return Integer mit der Höhe
 	 */
 	public Integer getAltitude() {
 		Integer hoehe = null;
@@ -207,6 +207,11 @@ public class Flugzeug {
 		}
 	}
 
+	/**
+	 * Liefert die Geschwindigkeit
+	 * 
+	 * @return String mit der Geschwindigkeit.
+	 */
 	public String getSpeed() {
 		return speed;
 	}
@@ -221,7 +226,7 @@ public class Flugzeug {
 	}
 
 	/**
-	 * @return das flight
+	 * @return String mit der Flugbezeichnung.
 	 */
 	public String getFlight() {
 		return flight;
@@ -236,7 +241,7 @@ public class Flugzeug {
 	}
 
 	/**
-	 * @return das nucp
+	 * @return String mit dem Nucp
 	 */
 	public String getNucp() {
 		return nucp;
@@ -281,7 +286,7 @@ public class Flugzeug {
 	}
 
 	/**
-	 * @return das track
+	 * @return String mit dem Track
 	 */
 	public String getTrack() {
 		return track;
@@ -296,7 +301,7 @@ public class Flugzeug {
 	}
 
 	/**
-	 * @return das mlat
+	 * @return List<String> mit Mlat
 	 */
 	public List<String> getMlat() {
 		return mlat;
@@ -341,7 +346,7 @@ public class Flugzeug {
 	}
 
 	/**
-	 * @return das seen
+	 * @return String mit Seen
 	 */
 	public String getSeen() {
 		return seen;
@@ -356,7 +361,7 @@ public class Flugzeug {
 	}
 
 	/**
-	 * @return das rssi
+	 * @return String mit Rssi
 	 */
 	public String getRssi() {
 		return rssi;
