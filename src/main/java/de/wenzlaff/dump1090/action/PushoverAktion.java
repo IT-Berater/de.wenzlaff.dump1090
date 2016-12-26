@@ -46,11 +46,21 @@ public class PushoverAktion implements Aktion {
 
 	private Flugzeug flugzeug;
 
+	/**
+	 * Konstruktor.
+	 * 
+	 * @param flugzeuge
+	 */
 	public PushoverAktion(Flugzeuge flugzeuge) {
 		this.flugzeuge = flugzeuge;
 		setProperties();
 	}
 
+	/**
+	 * Konstruktor.
+	 * 
+	 * @param flugzeug
+	 */
 	public PushoverAktion(Flugzeug flugzeug) {
 		this.flugzeug = flugzeug;
 		setProperties();
