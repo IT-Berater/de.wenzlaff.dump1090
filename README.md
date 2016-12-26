@@ -122,7 +122,7 @@ dann in der de.wenzlaff.dump1090.properties Datei unter pushover_laengengrad_min
 
 Es wird im Interval die vom Dump1090-Server geschriebenen JSon Datei (aircraft.json) eingelesen und in der Java Flugzeug Klasse bereitgestellt. Es wird also zur Entkopplung nicht der Stream des Dump1090 Servers gelesen. Die empfagenen Flugzeugdaten werden ausgewertet. Wenn das Flugzeug den Längengrad überschreitet und die Eingestellte Höhe hat, wird eine Pushover Nacchricht versendet. Ebenso wenn ein Notfall Transpondersignal empfangen wird.
 
-Manchmal nerven Flugzeugt, wie z.B. diese die nur durch die Weltgeschichte fliegen:
+Manchmal nerven Flugzeuge, wie z.B. diese Ausbildungsflüge, die nur durch die Weltgeschichte fliegen (klar Ausbildung muss sein, aber warum in Langenhagen):
 
 ![Langenhagen](/bilder/blacklist.png)
 
