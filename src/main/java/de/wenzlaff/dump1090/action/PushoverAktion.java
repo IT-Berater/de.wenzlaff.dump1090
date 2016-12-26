@@ -39,6 +39,9 @@ public class PushoverAktion implements Aktion {
 
 	private String pushoverDevices[];
 
+	/** Hier werden alle Flugzeuge (HEX) aufgelistet die auf der Blacklist stehen. */
+	private String blackListHexFlugzeuge[];
+
 	private Flugzeuge flugzeuge;
 
 	private Flugzeug flugzeug;
@@ -65,6 +68,13 @@ public class PushoverAktion implements Aktion {
 
 		String pushoverDevice = properties.getProperty("pushover_device", "device");
 		pushoverDevices = pushoverDevice.split(";");
+		LOG.debug("Sende Pushover an folgende Device {}", pushoverDevice);
+
+		String blackList = properties.getProperty("black_list_flugzeuge");
+		blackListHexFlugzeuge = blackList.split(";");
+		if (!blackList.isEmpty()) {
+			LOG.debug("Blocke die folgenden Flugzeuge mit HEX: {}", blackList);
+		}
 	}
 
 	@Override
@@ -75,32 +85,54 @@ public class PushoverAktion implements Aktion {
 
 		// für jedes Flugzeug eine Nachricht senden
 		for (int i = 0; i < this.flugzeuge.getAnzahlFlugzeuge(); i++) {
+			// aber nur wenn es nicht auf der Blacklist steht
+			Flugzeug flugzeug = this.flugzeuge.getFlugzeuge().get(i);
+			if (!isFlugzeugAufBlacklist(flugzeug)) {
+				String nachricht = this.flugzeuge.toString();
+				LOG.info(nachricht);
+				String nachrichtenUrl = pushoverNachrichtUrl + this.flugzeuge.getFlugzeuge().get(i).getHex();
+				LOG.info("Nachrichten URL: {}", nachrichtenUrl);
 
-			String nachricht = this.flugzeuge.toString();
-			LOG.info(nachricht);
-			String nachrichtenUrl = pushoverNachrichtUrl + this.flugzeuge.getFlugzeuge().get(i).getHex();
-			LOG.info("Nachrichten URL: {}", nachrichtenUrl);
-
-			for (int j = 0; j < pushoverDevices.length; j++) {
-				Status result = null;
-				try {
-					// Senden der Nachricht per Pushover
-					result = client.pushMessage(PushoverMessage.builderWithApiToken(pushoverMyApiToken).setUserId(pushoverUserToken).setMessage(nachricht)
-							.setDevice(pushoverDevices[j]).setPriority(MessagePriority.HIGH).setTitle("Flugzeug - Alarm!").setUrl(nachrichtenUrl).setTitleForURL("Flugzeug Notfall")
-							.setSound(PushoverSound.magic.name()).build());
-				} catch (PushoverException e) {
-					LOG.error("Fehler: Pushover Status: {}", result);
-					LOG.error("Fehler:{}", e);
-					return;
-				}
-				// Log status
-				if (result.getStatus() != 1) { // Status eins ist OK, alles anderer Fehler siehe https://pushover.net/api
-					LOG.error(String.format("Fehler: Pushover Status: %d, Request ID: %s", result.getStatus(), result.getRequestId()));
-				} else {
-					LOG.info("OK: Pushover Nachricht (Request Id: {} ) erfolgreich versendet um {}.", result.getRequestId(), new Date());
+				for (int j = 0; j < pushoverDevices.length; j++) {
+					Status result = null;
+					try {
+						// Senden der Nachricht per Pushover
+						result = client.pushMessage(PushoverMessage.builderWithApiToken(pushoverMyApiToken).setUserId(pushoverUserToken).setMessage(nachricht)
+								.setDevice(pushoverDevices[j]).setPriority(MessagePriority.HIGH).setTitle("Flugzeug - Alarm!").setUrl(nachrichtenUrl)
+								.setTitleForURL("Flugzeug Notfall").setSound(PushoverSound.magic.name()).build());
+					} catch (PushoverException e) {
+						LOG.error("Fehler: Pushover Status: {}", result);
+						LOG.error("Fehler:{}", e);
+						return;
+					}
+					// Log status
+					if (result.getStatus() != 1) { // Status eins ist OK, alles anderer Fehler siehe https://pushover.net/api
+						LOG.error(String.format("Fehler: Pushover Status: %d, Request ID: %s", result.getStatus(), result.getRequestId()));
+					} else {
+						LOG.info("OK: Pushover Nachricht (Request Id: {} ) erfolgreich versendet um {}.", result.getRequestId(), new Date());
+					}
 				}
 			}
 		}
+	}
+
+	/**
+	 * Methode überprüft ob das Flugzeug auf der Blackliste (properties) ist, dann true sonst false.
+	 * 
+	 * @param flugzeug
+	 *            das zu überprüfende Flugzeug
+	 * @return true, wenn es auf der Blacklliste ist, sonst false
+	 */
+	private boolean isFlugzeugAufBlacklist(Flugzeug flugzeug) {
+		// ist das Flugzeug in der Blackliste
+		for (int i = 0; i < blackListHexFlugzeuge.length; i++) {
+			if (flugzeug.getHex().trim().toLowerCase().equals(blackListHexFlugzeuge[i].trim().toLowerCase())) {
+				// ja, es ist in der Liste
+				LOG.info("Flugzeug mit HEX {} ist auf der Blacklist und wird ignoriert.", flugzeug.getHex());
+				return true;
+			}
+		}
+		return false; // nein, nicht auf der Blackliste
 	}
 
 	public void sendPushoverNachricht(String nachricht) {
@@ -122,22 +154,24 @@ public class PushoverAktion implements Aktion {
 
 	public void sendPushoverNachricht() {
 		if (this.flugzeug != null) {
-			String nachricht = getNachrichtFormat(this.flugzeug);
-			LOG.info("Versende Pushover Aktion mit folgender Nachricht: {}", nachricht);
+			if (!isFlugzeugAufBlacklist(this.flugzeug)) {
+				String nachricht = getNachrichtFormat(this.flugzeug);
+				LOG.info("Versende Pushover Aktion mit folgender Nachricht: {}", nachricht);
 
-			String nachrichtenUrl = pushoverNachrichtUrl + this.flugzeug.getHex();
-			LOG.info("Nachrichten URL: {}", nachrichtenUrl);
+				String nachrichtenUrl = pushoverNachrichtUrl + this.flugzeug.getHex();
+				LOG.info("Nachrichten URL: {}", nachrichtenUrl);
 
-			PushoverClient client = new PushoverRestClient();
+				PushoverClient client = new PushoverRestClient();
 
-			for (int i = 0; i < pushoverDevices.length; i++) {
-				Status result = null;
-				try {
-					result = client.pushMessage(PushoverMessage.builderWithApiToken(pushoverMyApiToken).setUserId(pushoverUserToken).setMessage(nachricht)
-							.setDevice(pushoverDevices[i]).setPriority(MessagePriority.HIGH).setTitle(NACHRICHTEN_TITEL).setUrl(nachrichtenUrl).setTitleForURL(pushoverNachrichtUrl)
-							.setSound(PushoverSound.magic.name()).build()); // sounds siehe https://pushover.net/api#sounds
-				} catch (PushoverException e) {
-					LOG.error("Fehler beim versenden der Pushover Nachricht: {} wegen: {} mit Result: {}", nachricht, e, result);
+				for (int i = 0; i < pushoverDevices.length; i++) {
+					Status result = null;
+					try {
+						result = client.pushMessage(PushoverMessage.builderWithApiToken(pushoverMyApiToken).setUserId(pushoverUserToken).setMessage(nachricht)
+								.setDevice(pushoverDevices[i]).setPriority(MessagePriority.HIGH).setTitle(NACHRICHTEN_TITEL).setUrl(nachrichtenUrl)
+								.setTitleForURL(pushoverNachrichtUrl).setSound(PushoverSound.magic.name()).build()); // sounds siehe https://pushover.net/api#sounds
+					} catch (PushoverException e) {
+						LOG.error("Fehler beim versenden der Pushover Nachricht: {} wegen: {} mit Result: {}", nachricht, e, result);
+					}
 				}
 			}
 		}

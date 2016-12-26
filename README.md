@@ -95,6 +95,10 @@ Dann fehlt nur noch eine de.wenzlaff.dump1090.properties Datei im Classpath mit 
 	# der Testmodus, bei true werden alles lokalen Tests ausgeführt, bei false nicht
 	lokaler_testmodus = true
 	
+	# HEX alle Flugzeuge die ignoriert werden - Blacklist z.B. Sportflugzeuge getrennt durch Semikolon
+    #                      GFD1  ;GAF621;GAF639
+    black_list_flugzeuge = 3cd061;3e8204;3ea653
+	
 # Start
 
 Start über die Javaklasse oder auch über die Kommandozeile:
@@ -118,7 +122,11 @@ dann in der de.wenzlaff.dump1090.properties Datei unter pushover_laengengrad_min
 
 Es wird im Interval die vom Dump1090-Server geschriebenen JSon Datei (aircraft.json) eingelesen und in der Java Flugzeug Klasse bereitgestellt. Es wird also zur Entkopplung nicht der Stream des Dump1090 Servers gelesen. Die empfagenen Flugzeugdaten werden ausgewertet. Wenn das Flugzeug den Längengrad überschreitet und die Eingestellte Höhe hat, wird eine Pushover Nacchricht versendet. Ebenso wenn ein Notfall Transpondersignal empfangen wird.
 
+Manchmal nerven Flugzeugt, wie z.B. diese die nur durch die Weltgeschichte fliegen:
 
+![Langenhagen](/bilder/blacklist.png)
+
+Dafür gibt es jetzt eine Blackliste. Einfach in der Propertie Datei de.wenzlaff.dump1090.properties die Kennung eingeben und schon wird das Flugzeug ignoriert.
 
 
 Details siehe [http://blog.wenzlaff.de/]
