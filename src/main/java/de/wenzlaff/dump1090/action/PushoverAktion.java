@@ -77,13 +77,17 @@ public class PushoverAktion implements Aktion {
 		pushoverNachrichtUrl = properties.getProperty("pushover_nachricht_url");
 
 		String pushoverDevice = properties.getProperty("pushover_device", "device");
-		pushoverDevices = pushoverDevice.split(";");
-		LOG.debug("Sende Pushover an folgende Device {}", pushoverDevice);
+		if (pushoverDevice != null) {
+			pushoverDevices = pushoverDevice.split(";");
+			LOG.debug("Sende Pushover an folgende Device {}", pushoverDevice);
+		}
 
 		String blackList = properties.getProperty("black_list_flugzeuge");
-		blackListHexFlugzeuge = blackList.split(";");
-		if (!blackList.isEmpty()) {
-			LOG.debug("Blocke die folgenden Flugzeuge mit HEX: {}", blackList);
+		if (blackList != null) {
+			blackListHexFlugzeuge = blackList.split(";");
+			if (!blackList.isEmpty()) {
+				LOG.debug("Blocke die folgenden Flugzeuge mit HEX: {}", blackList);
+			}
 		}
 	}
 
