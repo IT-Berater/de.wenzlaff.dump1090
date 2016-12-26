@@ -55,7 +55,7 @@ Folgende fachlichen Klassen gibt es, die auch für eigene Zwecke verwendet werde
 	   <dependency>
 	 		<groupId>de.wenzlaff.dump1090</groupId>
 	 		<artifactId>de.wenzlaff.dump1090</artifactId>
-	 		<version>0.0.6</version> 
+	 		<version>0.0.7</version> 
 	 	</dependency>
 	  </dependencies>
 
@@ -130,3 +130,6 @@ Dafür gibt es jetzt eine Blackliste. Einfach in der Propertie Datei de.wenzlaff
 
 
 Details siehe [http://blog.wenzlaff.de/]
+
+
+
