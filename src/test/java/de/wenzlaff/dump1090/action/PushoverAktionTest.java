@@ -30,7 +30,9 @@ public class PushoverAktionTest {
 
 	@Test
 	public void testRun() throws Exception {
-		this.pushoverAktion.run();
+		if (this.pushoverAktion != null) {
+			this.pushoverAktion.run();
+		}
 	}
 
 	@Test
