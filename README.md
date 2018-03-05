@@ -112,15 +112,14 @@ Start über die Javaklasse oder auch über die Kommandozeile:
 
 # Aufbau
 
-Es muss der Längengrad ermittelt werden, ab dem die Warnungen erscheinen sollen. Dazu mal dieses Foto von Langenhagen. Der Längengrad muss
-dann in der de.wenzlaff.dump1090.properties Datei unter pushover_laengengrad_min eingetragen werden. Es werden also alle Flugzeuge östliche (rechts) von dem Längengrad ermittelt.
+Es muss der Längengrad ermittelt werden, ab dem die Warnungen erscheinen sollen. Dazu mal dieses Foto von Langenhagen. Der Längengrad muss dann in der de.wenzlaff.dump1090.properties Datei unter pushover_laengengrad_min eingetragen werden. Es werden also alle Flugzeuge östliche (rechts) von dem Längengrad ermittelt.
 
 
 ![Langenhagen](/bilder/flughafen-eddv.png)
 
 # Funktion
 
-Es wird im Interval die vom Dump1090-Server geschriebenen JSon Datei (aircraft.json) eingelesen und in der Java Flugzeug Klasse bereitgestellt. Es wird also zur Entkopplung nicht der Stream des Dump1090 Servers gelesen. Die empfagenen Flugzeugdaten werden ausgewertet. Wenn das Flugzeug den Längengrad überschreitet und die Eingestellte Höhe hat, wird eine Pushover Nacchricht versendet. Ebenso wenn ein Notfall Transpondersignal empfangen wird.
+Es wird im Interval die vom Dump1090-Server geschriebenen JSon Datei (aircraft.json) eingelesen und in der Java Flugzeug Klasse bereitgestellt. Es wird also zur Entkopplung nicht der Stream des Dump1090 Servers gelesen. Die empfagenen Flugzeugdaten werden ausgewertet. Wenn das Flugzeug den Längengrad überschreitet und die eingestellte Höhe hat, wird eine Pushover Nachricht versendet. Ebenso wenn ein Notfall Transpondersignal empfangen wird.
 
 Manchmal nerven Flugzeuge, wie z.B. diese Ausbildungsflüge, die nur durch die Weltgeschichte fliegen (klar Ausbildung muss sein, aber warum in Langenhagen):
 
@@ -130,6 +129,3 @@ Dafür gibt es jetzt eine Blackliste. Einfach in der Propertie Datei de.wenzlaff
 
 
 Details siehe [http://blog.wenzlaff.de/]
-
-
-
