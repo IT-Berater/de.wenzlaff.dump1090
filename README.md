@@ -55,7 +55,7 @@ Folgende fachlichen Klassen gibt es, die auch für eigene Zwecke verwendet werde
 	   <dependency>
 	 		<groupId>de.wenzlaff.dump1090</groupId>
 	 		<artifactId>de.wenzlaff.dump1090</artifactId>
-	 		<version>0.0.7</version> 
+	 		<version>0.0.8</version> 
 	 	</dependency>
 	  </dependencies>
 
