@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>de.wenzlaff.dump1090</groupId>
 	<artifactId>de.wenzlaff.dump1090</artifactId>
-	<version>0.0.8-SNAPSHOT</version>
+	<version>0.0.9</version>
 	<packaging>jar</packaging>
 
 	<name>Thomas Wenzlaff</name>
@@ -25,9 +26,6 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<java.version>1.8</java.version>
-		<junit.jupiter.version>5.0.0-M2</junit.jupiter.version>
-		<junit.vintage.version>4.12.0-M2</junit.vintage.version>
-		<junit.platform.version>1.0.0-M2</junit.platform.version>
 	</properties>
 
 	<licenses>
@@ -53,6 +51,17 @@
 		<url>https://github.com/IT-Berater/de.wenzlaff.dump1090</url>
 	</scm>
 
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.junit</groupId>
+				<artifactId>junit-bom</artifactId>
+				<version>5.6.0</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
 	<build>
 		<plugins>
 			<plugin>
@@ -66,16 +75,7 @@
 			<plugin>
 				<artifactId>maven-surefire-plugin</artifactId>
 				<version>2.19</version>
-				<dependencies>
-					<dependency>
-						<groupId>org.junit.platform</groupId>
-						<artifactId>junit-platform-surefire-provider</artifactId>
-						<version>${junit.platform.version}</version>
-					</dependency>
-				</dependencies>
 			</plugin>
-
-<!-- 
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-gpg-plugin</artifactId>
@@ -101,8 +101,6 @@
 					<autoReleaseAfterClose>true</autoReleaseAfterClose>
 				</configuration>
 			</plugin>
- -->
-
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-jar-plugin</artifactId>
@@ -137,7 +135,6 @@
 					</execution>
 				</executions>
 			</plugin>
-
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-source-plugin</artifactId>
@@ -179,26 +176,28 @@
 					<check />
 				</configuration>
 			</plugin>
-			
+
 			<plugin>
-			  <artifactId>maven-dependency-plugin</artifactId>
-			  <version>2.10</version>
-			  <executions>
-			      <execution>
-			          <id>analyze</id>
-			          <goals>
-			              <goal>analyze-only</goal>
-			          </goals>
-			          <configuration>
-			              <failOnWarning>true</failOnWarning>
-			              <outputXML>true</outputXML>
-			              <ignoredDependencies>
-		                    <ignoredDependency>org.junit.jupiter:junit-jupiter-engine</ignoredDependency> 
-		                    <ignoredDependency>org.junit.vintage:junit-vintage-engine</ignoredDependency> 
-		                </ignoredDependencies>
-			          </configuration>
-			      </execution>
-			  </executions>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<version>2.10</version>
+				<executions>
+					<execution>
+						<id>analyze</id>
+						<goals>
+							<goal>analyze-only</goal>
+						</goals>
+						<configuration>
+							<failOnWarning>true</failOnWarning>
+							<outputXML>true</outputXML>
+							<ignoredDependencies>
+								<ignoredDependency>org.junit.jupiter:junit-jupiter-engine</ignoredDependency>
+								<ignoredDependency>org.junit.jupiter:junit-jupiter-api</ignoredDependency>
+								<ignoredDependency>junit:junit</ignoredDependency>
+								<ignoredDependency>org.junit.vintage:junit-vintage-engine</ignoredDependency>
+							</ignoredDependencies>
+						</configuration>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>
@@ -207,45 +206,33 @@
 		<dependency>
 			<groupId>org.junit.jupiter</groupId>
 			<artifactId>junit-jupiter-engine</artifactId>
-			<version>${junit.jupiter.version}</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.junit.vintage</groupId>
 			<artifactId>junit-vintage-engine</artifactId>
-			<version>${junit.vintage.version}</version>
 			<scope>test</scope>
 		</dependency>
-			<dependency>
-			  <groupId>org.junit.jupiter</groupId>
-			  <artifactId>junit-jupiter-api</artifactId>
-			  <version>5.0.0-M2</version>
-			  <scope>test</scope>
-			</dependency>
-			<dependency>
-			  <groupId>junit</groupId>
-			  <artifactId>junit</artifactId>
-			  <version>4.12</version>
-			  <scope>test</scope>
-			</dependency>
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter-api</artifactId>
+			<scope>test</scope>
+		</dependency>
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-api</artifactId>
 			<version>1.7.13</version>
 		</dependency>
-	
 		<dependency>
 			<groupId>com.google.code.gson</groupId>
 			<artifactId>gson</artifactId>
 			<version>2.7</version>
 			<scope>compile</scope>
 		</dependency>
-	
 		<dependency>
 			<groupId>com.github.sps.pushover.net</groupId>
 			<artifactId>pushover-client</artifactId>
 			<version>1.0.0</version>
-		</dependency>		
+		</dependency>
 	</dependencies>
-	
 </project>

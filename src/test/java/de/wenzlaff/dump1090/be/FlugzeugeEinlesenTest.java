@@ -12,10 +12,11 @@ import java.net.URL;
 import java.nio.charset.Charset;
 import java.util.Properties;
 
-import org.junit.Before;
 import org.junit.FixMethodOrder;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.runners.MethodSorters;
 
 import com.google.gson.Gson;
@@ -29,7 +30,8 @@ import de.wenzlaff.dump1090.action.SetupReader;
 /**
  * Test Klasse mit JUnit 5.
  * 
- * Mit den Codes 7500, 7600 und 7700 werden Informationen über die Art einer Luftnotlage übermittelt. Gebräuchliche Merksprüche sind angefügt:
+ * Mit den Codes 7500, 7600 und 7700 werden Informationen über die Art einer
+ * Luftnotlage übermittelt. Gebräuchliche Merksprüche sind angefügt:
  * 
  * <pre>
     7500 – Flugzeugentführung (hijacking; seven-five - man with a knife)
@@ -45,10 +47,13 @@ public class FlugzeugeEinlesenTest {
 
 	private String serverUrl;
 
-	/** Damit nur lokal getestet wird wenn true. Bei false werden nicht alle Tests ausgeführt. */
+	/**
+	 * Damit nur lokal getestet wird wenn true. Bei false werden nicht alle Tests
+	 * ausgeführt.
+	 */
 	private boolean lokalerTestmodus;
 
-	@Before
+	@BeforeAll
 	public void ini() {
 		Properties p = SetupReader.getProperties();
 		String ip = p.getProperty("dump1090_server_ip");
@@ -83,6 +88,7 @@ public class FlugzeugeEinlesenTest {
 		assertEquals(30, flugzeuge.getAnzahlFlugzeuge());
 	}
 
+	@Disabled
 	@Test
 	public void c_lesenViaUrl2() throws Exception {
 
@@ -100,6 +106,7 @@ public class FlugzeugeEinlesenTest {
 		}
 	}
 
+	@Disabled
 	@Test
 	public void d_lesenViaServerUrl3() throws Exception {
 
@@ -119,6 +126,7 @@ public class FlugzeugeEinlesenTest {
 		}
 	}
 
+	@Disabled
 	@Test
 	public void e_lesenNotfallViaServerUrl4() throws Exception {
 
