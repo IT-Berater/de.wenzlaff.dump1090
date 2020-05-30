@@ -5,7 +5,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>de.wenzlaff.dump1090</groupId>
 	<artifactId>de.wenzlaff.dump1090</artifactId>
-	<version>0.0.9</version>
+	<version>0.1.0-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
 	<name>Thomas Wenzlaff</name>
