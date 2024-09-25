@@ -1,6 +1,6 @@
 package de.wenzlaff.dump1090.action;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import de.wenzlaff.dump1090.be.Flugzeug;
 import de.wenzlaff.dump1090.be.Flugzeuge;

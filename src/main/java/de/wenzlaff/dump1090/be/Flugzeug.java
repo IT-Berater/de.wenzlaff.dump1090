@@ -48,7 +48,9 @@ public class Flugzeug {
 	/** Der Name der Variable muss so sein wie in der JSON Datei. */
 
 	/**
-	 * hex: the 24-bit ICAO identifier of the aircraft, as 6 hex digits. The identifier may start with '~', this means that the address is a non-ICAO address (e.g. from TIS-B).
+	 * hex: the 24-bit ICAO identifier of the aircraft, as 6 hex digits. The
+	 * identifier may start with '~', this means that the address is a non-ICAO
+	 * address (e.g. from TIS-B).
 	 */
 	private String hex;
 	/** squawk: the 4-digit squawk (octal representation) */
@@ -58,11 +60,13 @@ public class Flugzeug {
 	/** lon: the aircraft position in decimal degrees */
 	private String lon;
 	/**
-	 * altitude: the aircraft altitude in feet (Fuss), or "ground" if it is reporting it is on the ground
+	 * altitude: the aircraft altitude in feet (Fuss), or "ground" if it is
+	 * reporting it is on the ground
 	 */
 	private String altitude;
 	/**
-	 * speed: reported speed in kt (Knoten). This is usually speed over ground, but might be IAS - you can't tell the difference here, sorry!
+	 * speed: reported speed in kt (Knoten). This is usually speed over ground, but
+	 * might be IAS - you can't tell the difference here, sorry!
 	 */
 	private String speed;
 	/** flight: the flight name / callsign */
@@ -73,7 +77,8 @@ public class Flugzeug {
 	 */
 	private String nucp;
 	/**
-	 * seen_pos: how long ago (in seconds before "now") the position was last updated
+	 * seen_pos: how long ago (in seconds before "now") the position was last
+	 * updated
 	 */
 	private String seen_pos;
 	/** vert_rate: vertical rate in feet/minute */
@@ -83,11 +88,13 @@ public class Flugzeug {
 	/** messages: total number of Mode S messages received from this aircraft */
 	private String messages;
 	/**
-	 * seen: how long ago (in seconds before "now") a message was last received from this aircraft
+	 * seen: how long ago (in seconds before "now") a message was last received from
+	 * this aircraft
 	 */
 	private String seen;
 	/**
-	 * rssi: recent average RSSI (signal power), in dbFS; this will always be negative.
+	 * rssi: recent average RSSI (signal power), in dbFS; this will always be
+	 * negative.
 	 */
 	private String rssi;
 
@@ -131,7 +138,7 @@ public class Flugzeug {
 	/**
 	 * Set Breitengrad. Lat. N-S. z.B. 52,439444
 	 * 
-	 * @param lat
+	 * @param lat Latitude
 	 */
 	public void setLat(String lat) {
 		this.lat = lat;
@@ -162,7 +169,7 @@ public class Flugzeug {
 	/**
 	 * Set Längengrade.
 	 * 
-	 * @param lon
+	 * @param lon Longitude
 	 */
 	public void setLon(String lon) {
 		this.lon = lon;
@@ -198,7 +205,7 @@ public class Flugzeug {
 	/**
 	 * Set Höhe in Fuss.
 	 * 
-	 * @param altitude
+	 * @param altitude Höhe
 	 */
 	public void setAltitude(String altitude) {
 		this.altitude = altitude;
@@ -219,13 +226,15 @@ public class Flugzeug {
 	/**
 	 * Setzt die Geschwindigkeit in Meilen.
 	 * 
-	 * @param speed
+	 * @param speed Geschwindigkeit
 	 */
 	public void setSpeed(String speed) {
 		this.speed = speed;
 	}
 
 	/**
+	 * Liefert den Flug.
+	 * 
 	 * @return String mit der Flugbezeichnung.
 	 */
 	public String getFlight() {
@@ -233,8 +242,7 @@ public class Flugzeug {
 	}
 
 	/**
-	 * @param flight
-	 *            das flight wird gesetzt
+	 * @param flight das flight wird gesetzt
 	 */
 	public void setFlight(String flight) {
 		this.flight = flight;
@@ -248,8 +256,7 @@ public class Flugzeug {
 	}
 
 	/**
-	 * @param nucp
-	 *            das nucp wird gesetzt
+	 * @param nucp das nucp wird gesetzt
 	 */
 	public void setNucp(String nucp) {
 		this.nucp = nucp;
@@ -263,8 +270,7 @@ public class Flugzeug {
 	}
 
 	/**
-	 * @param seen_pos
-	 *            das seen_pos wird gesetzt
+	 * @param seen_pos das seen_pos wird gesetzt
 	 */
 	public void setSeen_pos(String seen_pos) {
 		this.seen_pos = seen_pos;
@@ -278,8 +284,7 @@ public class Flugzeug {
 	}
 
 	/**
-	 * @param vert_rate
-	 *            das vert_rate wird gesetzt
+	 * @param vert_rate das vert_rate wird gesetzt
 	 */
 	public void setVert_rate(String vert_rate) {
 		this.vert_rate = vert_rate;
@@ -293,29 +298,35 @@ public class Flugzeug {
 	}
 
 	/**
-	 * @param track
-	 *            das track wird gesetzt
+	 * Setzt den Track.
+	 * 
+	 * @param track das track wird gesetzt
 	 */
 	public void setTrack(String track) {
 		this.track = track;
 	}
 
 	/**
-	 * @return List<String> mit Mlat
+	 * Get Mlat.
+	 * 
+	 * @return mit Mlat
 	 */
 	public List<String> getMlat() {
 		return mlat;
 	}
 
 	/**
-	 * @param mlat
-	 *            das mlat wird gesetzt
+	 * Setzt Mlat
+	 * 
+	 * @param mlat das mlat wird gesetzt
 	 */
 	public void setMlat(List<String> mlat) {
 		this.mlat = mlat;
 	}
 
 	/**
+	 * Get Tisb.
+	 * 
 	 * @return das tisb
 	 */
 	public List<String> getTisb() {
@@ -323,29 +334,35 @@ public class Flugzeug {
 	}
 
 	/**
-	 * @param tisb
-	 *            das tisb wird gesetzt
+	 * Set Tisb
+	 * 
+	 * @param tisb das tisb wird gesetzt
 	 */
 	public void setTisb(List<String> tisb) {
 		this.tisb = tisb;
 	}
 
 	/**
-	 * @return das messages
+	 * Get Message.
+	 * 
+	 * @return die messages
 	 */
 	public String getMessages() {
 		return messages;
 	}
 
 	/**
-	 * @param messages
-	 *            das messages wird gesetzt
+	 * Setzt die Message.
+	 * 
+	 * @param messages die messages wird gesetzt
 	 */
 	public void setMessages(String messages) {
 		this.messages = messages;
 	}
 
 	/**
+	 * Liefert gesehen.
+	 * 
 	 * @return String mit Seen
 	 */
 	public String getSeen() {
@@ -353,14 +370,15 @@ public class Flugzeug {
 	}
 
 	/**
-	 * @param seen
-	 *            das seen wird gesetzt
+	 * @param seen das seen wird gesetzt
 	 */
 	public void setSeen(String seen) {
 		this.seen = seen;
 	}
 
 	/**
+	 * Get Rssi.
+	 * 
 	 * @return String mit Rssi
 	 */
 	public String getRssi() {
@@ -368,8 +386,9 @@ public class Flugzeug {
 	}
 
 	/**
-	 * @param rssi
-	 *            das rssi wird gesetzt
+	 * Set Rssi.
+	 * 
+	 * @param rssi das rssi wird gesetzt
 	 */
 	public void setRssi(String rssi) {
 		this.rssi = rssi;

@@ -1,11 +1,11 @@
 package de.wenzlaff.dump1090.action;
 
-import static org.junit.Assert.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import java.util.Properties;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import de.wenzlaff.dump1090.be.Flugzeug;
 import de.wenzlaff.dump1090.be.Flugzeuge;
@@ -18,12 +18,15 @@ import de.wenzlaff.dump1090.be.Luftnotfall;
  */
 public class PushoverAktionTest {
 
-	/** Damit nur lokal getestet wird wenn true. Bei false werden nicht alle Tests ausgeführt. */
+	/**
+	 * Damit nur lokal getestet wird wenn true. Bei false werden nicht alle Tests
+	 * ausgeführt.
+	 */
 	private boolean lokalerTestmodus;
 
 	private PushoverAktion pushoverAktion;
 
-	@Before
+	@BeforeEach
 	public void ini() {
 		Properties p = SetupReader.getProperties();
 		lokalerTestmodus = Boolean.valueOf(p.getProperty("lokaler_testmodus", "false"));

@@ -1,11 +1,11 @@
 package de.wenzlaff.dump1090.be;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.Properties;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import de.wenzlaff.dump1090.action.SetupReader;
 
@@ -17,10 +17,13 @@ import de.wenzlaff.dump1090.action.SetupReader;
  */
 public class ConverterTest {
 
-	/** Damit nur lokal getestet wird wenn true. Bei false werden nicht alle Tests ausgeführt. */
+	/**
+	 * Damit nur lokal getestet wird wenn true. Bei false werden nicht alle Tests
+	 * ausgeführt.
+	 */
 	private boolean lokalerTestmodus;
 
-	@Before
+	@BeforeEach
 	public void ini() {
 		Properties p = SetupReader.getProperties();
 		lokalerTestmodus = Boolean.valueOf(p.getProperty("lokaler_testmodus", "false"));

@@ -1,13 +1,13 @@
 package de.wenzlaff.dump1090.be;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.ArrayList;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 /**
  * Testklasse für die Flugzeuge.
@@ -20,7 +20,7 @@ public class FlugzeugeTest {
 	/** Test Flugzeug. */
 	private Flugzeuge flugzeuge;
 
-	@Before
+	@BeforeEach
 	public void iniTestfall() {
 		flugzeuge = new Flugzeuge();
 	}

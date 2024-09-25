@@ -1,6 +1,6 @@
 package de.wenzlaff.dump1090.action;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * Test für die Timer Aktion.
@@ -19,5 +19,4 @@ public class TimerAktionTest {
 	public void testTimerAktion() {
 		new TimerAktion("10.0.9.23");
 	}
-
 }

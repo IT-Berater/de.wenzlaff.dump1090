@@ -20,10 +20,16 @@ public class Flugzeuge {
 
 	private static final Logger LOG = LoggerFactory.getLogger(Flugzeuge.class);
 
-	/** Längengrad von Langenhagen in der Tempelhofer Str. 9.742556, Breitengrad 52.438453 mit Höhe 51 m. */
+	/**
+	 * Längengrad von Langenhagen in der Tempelhofer Str. 9.742556, Breitengrad
+	 * 52.438453 mit Höhe 51 m.
+	 */
 	private String laengengradMin;
 
-	/** Die maximale Höhe in Fuss (bei Meter mal * 0.3048 z.B. 2000 Fuss * 0.3 = 609 Meter). */
+	/**
+	 * Die maximale Höhe in Fuss (bei Meter mal * 0.3048 z.B. 2000 Fuss * 0.3 = 609
+	 * Meter).
+	 */
 	private int maxHoehe;
 
 	/** Der Name der Variable muss so sein wie in der JSON Datei. */
@@ -42,7 +48,8 @@ public class Flugzeuge {
 	/**
 	 * Liefert alle Flugzeuge mit Luftnotfall.
 	 * 
-	 * Mit den Codes 7500, 7600 und 7700 werden Informationen über die Art einer Luftnotlage übermittelt.
+	 * Mit den Codes 7500, 7600 und 7700 werden Informationen über die Art einer
+	 * Luftnotlage übermittelt.
 	 * 
 	 * Gebräuchliche Merksprüche sind angefügt:
 	 * 
@@ -71,7 +78,7 @@ public class Flugzeuge {
 	/**
 	 * Liefert alle Flugzeuge im Landeanflug und Start.
 	 * 
-	 * @return List<Flugzeug> die Flugzeuge die im An bzw. Abflug sind.
+	 * @return die Flugzeuge die im An bzw. Abflug sind.
 	 */
 	public List<Flugzeug> getFlugzeugeImAnAbflug() {
 
@@ -89,12 +96,12 @@ public class Flugzeuge {
 	/**
 	 * Liefert true, wenn ein Flugzeug im Landeanflug oder Start ist, sonst false.
 	 * 
-	 * Es wird überprüft ob das Flugzeug unter der maximalen Höhe ist. Ob das Flugzeug in der Luft ist. Am Boden wird nicht berücksichtigt.
+	 * Es wird überprüft ob das Flugzeug unter der maximalen Höhe ist. Ob das
+	 * Flugzeug in der Luft ist. Am Boden wird nicht berücksichtigt.
 	 * 
 	 * Und ob das Flugzeug aus dem Osten kommt oder startet in richtung Osten.
 	 * 
-	 * @param flugzeug
-	 *            das überprüft wird.
+	 * @param flugzeug das überprüft wird.
 	 * @return true wenn Start oder Landung aus bzw. nach Osten.
 	 */
 	private boolean isImStartUndLandeanflug(Flugzeug flugzeug) {
@@ -142,8 +149,7 @@ public class Flugzeuge {
 	}
 
 	/**
-	 * @param now
-	 *            das now wird gesetzt
+	 * @param now das now wird gesetzt
 	 */
 	public void setNow(String now) {
 		this.now = now;
@@ -157,16 +163,14 @@ public class Flugzeuge {
 	}
 
 	/**
-	 * @param messages
-	 *            das messages wird gesetzt
+	 * @param messages das messages wird gesetzt
 	 */
 	public void setMessages(String messages) {
 		this.messages = messages;
 	}
 
 	/**
-	 * @param flugzeuge
-	 *            das flugzeuge wird gesetzt
+	 * @param flugzeuge das flugzeuge wird gesetzt
 	 */
 	public void setFlugzeuge(List<Flugzeug> flugzeuge) {
 		this.aircraft = flugzeuge;

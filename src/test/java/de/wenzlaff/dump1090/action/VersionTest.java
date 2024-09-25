@@ -1,8 +1,8 @@
 package de.wenzlaff.dump1090.action;
 
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * Test der Version.
@@ -18,5 +18,4 @@ public class VersionTest {
 		System.out.println(v.getVersion());
 		assertTrue(v.getVersion().length() >= 0);
 	}
-
 }

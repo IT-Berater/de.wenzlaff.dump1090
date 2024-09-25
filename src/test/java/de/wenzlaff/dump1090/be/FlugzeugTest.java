@@ -1,11 +1,11 @@
 package de.wenzlaff.dump1090.be;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 /**
  * Testklasse für die Flugzeuge.
@@ -17,46 +17,46 @@ public class FlugzeugTest {
 
 	private Flugzeug flugzeug;
 
-	@Before
-	public void setUp() throws Exception {
+	@BeforeEach
+	void setUp() throws Exception {
 		flugzeug = new Flugzeug();
 	}
 
 	@Test
-	public void testFlugzeug() {
+	void testFlugzeug() {
 		assertNotNull(flugzeug);
 	}
 
 	@Test
-	public void testGetHex() {
+	void testGetHex() {
 		assertNull(flugzeug.getHex());
 	}
 
 	@Test
-	public void testSetHex() {
+	void testSetHex() {
 		flugzeug.setHex("junit");
 		assertEquals("junit", flugzeug.getHex());
 	}
 
 	@Test
-	public void testGetSquawk() {
+	void testGetSquawk() {
 		assertNull(flugzeug.getSquawk());
 	}
 
 	@Test
-	public void testSetSquawkString() {
+	void testSetSquawkString() {
 		flugzeug.setSquawk("junit");
 		assertEquals("junit", flugzeug.getSquawk());
 	}
 
 	@Test
-	public void testSetSquawkLuftnotfall() {
+	void testSetSquawkLuftnotfall() {
 		flugzeug.setSquawk(Luftnotfall.FUNKAUSFALL);
 		assertEquals(Luftnotfall.FUNKAUSFALL.getCode(), flugzeug.getSquawk());
 	}
 
 	@Test
-	public void testIsLandeanflug() {
+	void testIsLandeanflug() {
 		assertNull(flugzeug.getAltitude());
 		assertNull(flugzeug.getAltitudeAsString());
 
@@ -65,11 +65,10 @@ public class FlugzeugTest {
 	}
 
 	@Test
-	public void testGleich() {
+	void testGleich() {
 		Flugzeug flugzeugKopie = new Flugzeug();
 		assertEquals(true, flugzeug.equals(flugzeugKopie));
 		flugzeugKopie.setFlight("NEU");
 		assertEquals(false, flugzeug.equals(flugzeugKopie));
 	}
-
 }

@@ -1,7 +1,7 @@
 package de.wenzlaff.dump1090.be;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.io.BufferedReader;
 import java.io.FileInputStream;
@@ -12,12 +12,12 @@ import java.net.URL;
 import java.nio.charset.Charset;
 import java.util.Properties;
 
-import org.junit.FixMethodOrder;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Test;
-import org.junit.runners.MethodSorters;
+import org.junit.jupiter.api.TestMethodOrder;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -42,19 +42,19 @@ import de.wenzlaff.dump1090.action.SetupReader;
  * @author Thomas Wenzlaff
  * @version 0.1
  */
-@FixMethodOrder(MethodSorters.NAME_ASCENDING)
+@TestMethodOrder(MethodOrderer.MethodName.class)
 public class FlugzeugeEinlesenTest {
 
-	private String serverUrl;
+	private static String serverUrl;
 
 	/**
 	 * Damit nur lokal getestet wird wenn true. Bei false werden nicht alle Tests
 	 * ausgeführt.
 	 */
-	private boolean lokalerTestmodus;
+	private static boolean lokalerTestmodus;
 
 	@BeforeAll
-	public void ini() {
+	public static void ini() {
 		Properties p = SetupReader.getProperties();
 		String ip = p.getProperty("dump1090_server_ip");
 		serverUrl = "http://" + ip + "/dump1090/data/aircraft.json";
