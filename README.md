@@ -55,7 +55,7 @@ Folgende fachlichen Klassen gibt es, die auch für eigene Zwecke verwendet werde
 	   <dependency>
 	 		<groupId>de.wenzlaff.dump1090</groupId>
 	 		<artifactId>de.wenzlaff.dump1090</artifactId>
-	 		<version>0.0.8</version> 
+	 		<version>0.1.0</version> 
 	 	</dependency>
 	  </dependencies>
 
@@ -103,7 +103,7 @@ Dann fehlt nur noch eine de.wenzlaff.dump1090.properties Datei im Classpath mit 
 
 Start über die Javaklasse oder auch über die Kommandozeile:
 
-	java -jar de.wenzlaff.dump1090-0.0.5.jar 10.0.9.32 5
+	java -jar de.wenzlaff.dump1090-0.1.0.jar 10.0.9.32 5
 	
 
 # Klassendiagramm
